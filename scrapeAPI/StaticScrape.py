@@ -6,10 +6,11 @@ from mysql.connector import errorcode
 
 
 try:
-    connection = mysql.connector.connect(host='localhost',
-                                         database='testDB',
-                                         user='stephen',
-                                         password='1993')
+    connection = mysql.connector.connect(host='villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com',
+                                         port='3306',
+                                         database='VillageBikesDB',
+                                         user='ssk',
+                                         password='villagebikes')
     
     with urllib.request.urlopen("https://api.jcdecaux.com/vls/v1/stations?contract=DUBLIN&apiKey=325a6c3fc2a812061a0adf4833eed7c5eb3b6813") as url:
         data = json.loads(url.read().decode())
@@ -20,18 +21,16 @@ try:
         address = data[i]['address']
         lat = data[i]['position']['lat']
         lng = data[i]['position']['lng']
-        banking = data[i]['banking']
-
      
         cursor = connection.cursor()
          
-        sql_insert_query = "INSERT INTO `static` (`number`, `name`, `address`, `latitiude`, `longitude`, `banking`) VALUES (%s,%s,%s,%s,%s,%s)"
+        sql_insert_query = "INSERT INTO `staticData` (`number`, `name`, `address`, `latitude`, `longitude`) VALUES (%s,%s,%s,%s,%s)"
          
-        insert_tuple = (number, name, address, lat, lng, banking)
+        insert_tuple = (number, name, address, lat, lng)
          
         result = cursor.execute(sql_insert_query, insert_tuple)
         connection.commit()
-        print("Inserted success")
+    print("Inserted success")
      
 except mysql.connector.Error as error :
     connection.rollback()
