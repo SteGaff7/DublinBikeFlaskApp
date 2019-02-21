@@ -29,25 +29,25 @@ while True:
         
             cursor = connection.cursor()
             
-            sql_insert_query = "INSERT INTO `dynamic` (`number`, `name`, `status`, `bike_stands`, `available_bikes`, `available_stands`, `last_update`, `banking`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+            sql_insert_query = "INSERT IGNORE INTO `dynamicData` (`number`, `name`, `status`, `bike_stands`, `available_bikes`, `available_stands`, `last_update`, `banking`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
             
             insert_tuple = (number, name, status, bike_stands, available_bike_stands, available_bikes, last_update, banking)
             
             result = cursor.execute(sql_insert_query, insert_tuple)
             connection.commit()
                
-        print("Insertions successful")
+        #print("Insertions successful")
        
         
     except mysql.connector.Error as error :
         connection.rollback()
-        print("Failed inserting record into python_users table {}".format(error))  
+        #print("Failed inserting record into python_users table {}".format(error))  
     
     finally:
         #closing database connection.
         if(connection.is_connected()):
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")
+            #print("MySQL connection is closed")
             
-        time.sleep(300)
+        time.sleep(40)

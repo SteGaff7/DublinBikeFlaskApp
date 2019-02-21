@@ -26,23 +26,23 @@ while True:
              
             cursor = connection.cursor()
              
-            sql_insert_query = "INSERT INTO `weatherData` (`timestamp`, `weather_id`, `main`, `description`, `temperature`, `humidity`, `wind_speed`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+            sql_insert_query = "INSERT IGNORE INTO `weatherData` (`timestamp`, `weather_id`, `main`, `description`, `temperature`, `humidity`, `wind_speed`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
             
             insert_tuple = (time_updated, weather_id, main, description, temp, humidity, wind_speed)
             
             result = cursor.execute(sql_insert_query, insert_tuple)
             connection.commit()
-            print("Inserted success")    
+            #print("Inserted success")    
              
     except mysql.connector.Error as error :
         connection.rollback()
-        print("Failed inserting record into python_users table {}".format(error))  
+        #print("Failed inserting record into python_users table {}".format(error))  
      
     finally:
         #closing database connection.
         if(connection.is_connected()):
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")
+            #print("MySQL connection is closed")
             
-        time.sleep(1800)
+        time.sleep(1200)
