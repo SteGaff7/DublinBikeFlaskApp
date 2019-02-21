@@ -7,10 +7,11 @@ from mysql.connector import errorcode
 while True:
     
     try:
-        connection = mysql.connector.connect(host='localhost',
-                                            database='testDB',
-                                            user='stephen',
-                                            password='1993')
+        connection = mysql.connector.connect(host='villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com',
+                                         port='3306',
+                                         database='VillageBikesDB',
+                                         user='ssk',
+                                         password='villagebikes')
        
         with urllib.request.urlopen("https://api.jcdecaux.com/vls/v1/stations?contract=DUBLIN&apiKey=325a6c3fc2a812061a0adf4833eed7c5eb3b6813") as url:
             data = json.loads(url.read().decode())
@@ -37,7 +38,6 @@ while True:
                
         print("Insertions successful")
        
-        time.sleep(300)
         
     except mysql.connector.Error as error :
         connection.rollback()
@@ -49,3 +49,5 @@ while True:
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
+            
+        time.sleep(300)
