@@ -36,8 +36,15 @@ while True:
              
     except mysql.connector.Error as error :
         connection.rollback()
-        #print("Failed inserting record into python_users table {}".format(error))  
-     
+        f=open('errorLogWeather.txt','a')
+        f.write(error)
+        f.close()  
+    
+    except Exception as error:
+        f=open('errorLogWeather.txt','a')
+        f.write(error)
+        f.close()
+
     finally:
         #closing database connection.
         if(connection.is_connected()):

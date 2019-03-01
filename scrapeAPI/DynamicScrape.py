@@ -35,13 +35,18 @@ while True:
             
             result = cursor.execute(sql_insert_query, insert_tuple)
             connection.commit()
-               
-        #print("Insertions successful")
        
         
     except mysql.connector.Error as error :
         connection.rollback()
-        #print("Failed inserting record into python_users table {}".format(error))  
+        f=open('errorLog.txt','a')
+        f.write(error)
+        f.close()
+
+    except Exception as error:
+        f=open('errorLog.txt','a')
+        f.write(error)
+        f.close()
     
     finally:
         #closing database connection.
