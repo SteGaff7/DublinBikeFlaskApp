@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	body {
+		color: blue;
+	}
+</style>
+	<title></title>
+</head>
+	<body>
+	<form action="" method="get">
+		<input type="submit" name="number" value="42"/>
+	</form>
+	<script type=text/javascript src="{{ url_for('static', filename='jquery-3.3.1.js') }}"></script>
+		<table>
+		{% for item in data %}
+			<script>
+				function myFunction(item) {
+					document.getElementById("demo").innerHTML = item;
+				}
+			</script>
+			<p id ="demo">Paragraph</p>
+			<tr>
+				   <td>{{item}} ------ </td>
+			</tr>
+		{% endfor %}
+		</table>
+	<body>
+</html>
+		
