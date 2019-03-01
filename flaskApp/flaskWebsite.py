@@ -7,7 +7,7 @@ def home():
 
 @app.route("/about") # Tells the browser where to look
 def How_it_works():
-    return render_template('about.html', title='About') # This points to the html page
+    return render_template('how_it_works.html', title='About') # This points to the html page
 
 @app.route("/subscription") # Tells the browser where to look
 def subscription():
@@ -15,8 +15,7 @@ def subscription():
 
 @app.route("/contact") # Tells the browser where to look
 def Contact():
-    return render_template('contact.html', title-'Contact') # This points to the html page
-
+    return render_template('contact.html', title='Contact') # This points to the html page
 
 if __name__ == '__main__': # This will allow us to run the and change the page without restarting the server
     app.run(debug=True)

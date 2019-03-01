@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+	<style>
+ 		<span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
+    </style>
+</head>
+
+<body>
+	<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>    
+	<h3>My Google Maps Demo</h3>
+	<div id="map">hello</div>
+	<table>
+		{% for item in data %}
+			<tr>
+			    <td>{{item}} - </td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	<script>
+	
+	function initMap() {
+	  // The location of Uluru
+	  var uluru = {lat: -25.344, lng: 131.036};
+	  // The map, centered at Uluru
+	  var map = new google.maps.Map(
+	      document.getElementById('map'), {zoom: 4, center: uluru});
+	  // The marker, positioned at Uluru
+	  var marker = new google.maps.Marker({position: uluru, map: map});
+	}
+	</script>
+	
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvDRog7iZgLLBXNLOOdGfX1M-lNegQVks&callback=initMap">
+	</script>
+</body>	      
+</html>
