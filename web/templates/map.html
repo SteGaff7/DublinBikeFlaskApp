@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+	<style>
+ 		<span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
+    </style>
+</head>
+
+<body>
+	<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>    
+	<h3>My Google Maps Demo</h3>
+	<div id="map">hello</div>
+	<p id='test'></p>
+	
+	<script>
+	
+	function initMap() {
+	// The map, centered at Stephens Green
+	  var map = new google.maps.Map(
+	      document.getElementById('map'), {zoom: 16, center: {lat:  53.3375, lng: -6.26199}});
+	      
+		{% for item in data %}
+			var statNum;
+			statNum = '{{item[0]}}';
+			statName = '{{item[2]}}';
+			statLat = '{{item[3]}}';
+			statLng = '{{item[4]}}';
+			var marker = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map});
+			<!--document.getElementById("test").innerHTML += '{{item}}';-->
+			
+		{% endfor %}
+		
+	}
+	</script>
+	
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&callback=initMap">
+	</script>
+</body>	      
+</html>
