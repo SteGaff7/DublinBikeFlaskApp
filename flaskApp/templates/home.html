@@ -5,9 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/css/template.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
   
 </head>
     
@@ -36,14 +37,13 @@
     
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
     
+    <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
     
 </style>
     
-
 <body>
 
-   <h1><img src="/static/images/dublinbikeslogo.png" width="20%" height="60px" id="dublinbikeslogo"> <img src="/static/images/dublincitycouncil.png" width="20%" height="60px" id="dublincitycouncil"> </h1> 
-
+   <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1> 
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -76,16 +76,43 @@
                     <input type="radio" name="station" id="radiobutton2">  Collect a bike
                     <input type="radio" name ="station" id="radiobutton3"> Drop off a bike<br>
                 </form>
-
-                <iframe id="googlemap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2382.283751201312!2d-6.261071085211723!3d53.33817665428277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e992e73ac2d%3A0xa0442f3f43b25682!2sSt+Stephen&#39;s+Green%2C+Dublin!5e0!3m2!1sen!2sie!4v1551218101302" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-    
 </div>
-  
+ 
+ 
+ <!-- GOOGLE MAP INTERFACE -->
+<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>    
+<h3>My Google Maps Demo</h3>
+<div id="map">Map goes here</div>
 
     
 <footer class="container-fluid">
     <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
 </footer>
+
+<script>
+	
+	function initMap() {
+	// The map, centered at Stephens Green
+	  var map = new google.maps.Map(
+	      document.getElementById('map'), {zoom: 16, center: {lat:  53.3375, lng: -6.26199}});
+	      
+		{% for item in data %}
+			var statNum;
+			statNum = '{{item[0]}}';
+			statName = '{{item[2]}}';
+			statLat = '{{item[3]}}';
+			statLng = '{{item[4]}}';
+			var marker = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map});
+			<!--document.getElementById("test").innerHTML += '{{item}}';-->
+			
+		{% endfor %}
+		
+	}
+	</script>
+	
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&callback=initMap">
+	</script>
 
 </body>
 </html>

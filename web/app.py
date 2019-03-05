@@ -1,16 +1,34 @@
-import mysql.connector, time
-from flask import Flask, render_template, g, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
-from mysql.connector.errorcode import CR_INSECURE_API_ERR
+import time 
+from flask import Flask, render_template
+import pymysql
 
 app = Flask(__name__, static_url_path='')
 
-
 def connect_to_database():
-    engine = create_engine("mysql+mysqldb://ssk:villagebikes@villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com:3306/VillageBikesDB")
-    connection = engine.connect()
-    return connection
+   host = 'villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com'
+   port=3306
+   dbname = 'VillageBikesDB'
+   user='ssk'
+   password='villagebikes'
+
+   connection = pymysql.connect(host, user=user, passwd=password, db=dbname)
+   return connection
+
+connection = connect_to_database()
+
+try:
+   with connection.cursor() as cursor:
+       sql = 'SELECT * FROM staticData'
+       cursor.execute(sql)
+       result = cursor.fetchall()
+       print(result)
+except:
+   print('Hello')
+
+#def connect_to_database():
+#    engine = create_engine("mysql+mysqldb://ssk:villagebikes@villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com:3306/VillageBikesDB")
+#    connection = engine.connect()
+#    return connection
 
 #Establish connection and assign to connection
 connection = connect_to_database()
@@ -28,14 +46,18 @@ def about():
     return render_template('about.html')
 
 #Static Map page
-@app.route("/static")
+@app.route("/static2")
 def test():
-    result = connection.execute("select * from staticData")
-    data = result.fetchall()
-    print(type(result))
-    print(data)
-    print(data[0])
-    return render_template("map.html", data=data)
+    with connection.cursor() as cursor:
+        sql = 'SELECT * FROM staticData'
+        cursor.execute(sql)
+        result = cursor.fetchall() 
+    #result = connection.execute("select * from staticData")
+    #data = result.fetchall()
+    #print(type(result))
+    #print(data)
+    #print(data[0])
+    return render_template("map.html", data=result)
 
 @app.route("/dynamic")
 def testDynamic():
@@ -74,7 +96,46 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
-    
+   
+
+
+
+
+'''
+OLD MYSQLALCHEMY CONNECTION
+
+from sqlalchemy import create_engine
+from flask_sqlalchemy import SQLAlchemy
+import mysql.connector
+from mysql.connector.errorcode import CR_INSECURE_API_ERR
+from flask import g, jsonify, request
+
+
+
+def connect_to_database():
+    engine = create_engine("mysql+mysqldb://ssk:villagebikes@villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com:3306/VillageBikesDB")
+    connection = engine.connect()
+    return connection
+
+#Establish connection and assign to connection
+connection = connect_to_database()
+
+
+
+
+OLD MYSQLALCHEMY EXECUTE
+
+#Static Map page
+@app.route("/static2")
+def test():
+    result = connection.execute("select * from staticData")
+    data = result.fetchall()
+    print(type(result))
+    print(data)
+    print(data[0])
+    return render_template("map.html", data=data)
+
+''' 
 
 
 '''
