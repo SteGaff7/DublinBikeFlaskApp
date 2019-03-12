@@ -1,5 +1,5 @@
 import time
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, request
 import pymysql
 
 app = Flask(__name__, static_url_path='')
@@ -19,7 +19,18 @@ connection = connect_to_database()
 #Establish connection and assign to connection
 connection = connect_to_database()
 
-@app.route("/home") # Tells the browser where to look
+def get_user_station_info(address, date, time, station):
+
+    f= open("print.txt","w")
+
+    f.write("This is the the address: " + address + "\n")
+    f.write("This is the the address: " + date + "\n")
+    f.write("This is the the address: " + time + "\n")
+    f.write("This is the preference: " + station + "\n")
+
+    return("Okay")
+
+@app.route("/home", methods=["POST", "GET"]) # Tells the browser where to look
 def home():
     try:
         with connection.cursor() as cursor:
@@ -29,7 +40,18 @@ def home():
     except:
         print('Error')
 
-    return render_template("home.html", data=result)
+
+    if request.method == "POST":
+        address = request.form['address']
+        date = request.form['date']
+        time = request.form['time']
+        station = request.form['station']
+
+        get_user_station_info(address, date, time, station)
+        result_2 = 0
+        return render_template("home.html", data=result, box=result_2)
+    else:
+        return render_template("home.html", data=result)
 
 @app.route("/about") # Tells the browser where to look
 def How_it_works():

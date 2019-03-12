@@ -67,14 +67,14 @@
 
 
 <div class="filter">
-                <form id="filter" method="post">
-                    <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
-                    <input type="date" id="date" data-date-inline-picker="true" />
-                    <input type="time" id="time" ><br><br>
-                    <button id="gobutton">Go!</button><br><br>
-                    <input type="radio" name="station" id="radiobutton1"> Display all stations
-                    <input type="radio" name="station" id="radiobutton2">  Collect a bike
-                    <input type="radio" name ="station" id="radiobutton3"> Drop off a bike<br>
+                <form action="{{ url_for('home') }}" id="filter" method="POST">
+                    <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..." value="{{request.form.address}}"><br><br>
+                    <input type="date" name="date" id="date" data-date-inline-picker="true" value="{{request.form.date}}">
+                    <input type="time" name="time" id="time" value="{{request.form.time}}"><br><br>
+                    <input type='submit' id="gobutton"></input><br><br>
+                    <input type="radio" name="station" id="radiobutton1" value='all'> Display all stations
+                    <input type="radio" name="station" id="radiobutton2" value='bikes'>  Collect a bike
+                    <input type="radio" name="station" id="radiobutton3" value='stands'> Drop off a bike<br>
                 </form>
 </div>
 
@@ -84,13 +84,26 @@
 <h3>My Google Maps Demo</h3>
 <div id="map" style=height:500px;>Map goes here</div>
 
+<div id="analytics" style="float:inline">Analytics wil go Here</div>
 
-<footer class="container-fluid">
-    <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
-</footer>
-
+<div>
+  <footer class="container-fluid">
+      <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
+  </footer>
+</div>
 <script>
 
+{% if box == 0 %}
+  function boxDisplay() {
+    // This function will excute when the user asks for analytics.
+    // It will create a box along side the map.//
+    {% for item in box %}
+
+    document.getElementById('analytics').innerHTML
+    {% endfor %}
+  }
+
+{% else %}
 	function initMap() {
 	// The map, centered at Stephens Green
 	  var map = new google.maps.Map(
@@ -108,6 +121,8 @@
 		{% endfor %}
 
 	}
+{% endif %}
+
 	</script>
 
 	<script async defer
