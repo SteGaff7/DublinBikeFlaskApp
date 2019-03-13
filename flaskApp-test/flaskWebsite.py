@@ -32,25 +32,33 @@ def get_user_station_info(address, date, time, station):
 
 @app.route("/home", methods=["POST", "GET"]) # Tells the browser where to look
 def home():
-    try:
-        with connection.cursor() as cursor:
-            sql = 'SELECT * FROM staticData'
-            cursor.execute(sql)
-            result = cursor.fetchall()
-    except:
-        print('Error')
-
-
     if request.method == "POST":
+        
+        try:
+            with connection.cursor() as cursor:
+                sql = 'SELECT * FROM staticData'
+                cursor.execute(sql)
+                result = cursor.fetchall()
+        except:
+            print('Error')
+
         address = request.form['address']
         date = request.form['date']
         time = request.form['time']
         station = request.form['station']
 
-        get_user_station_info(address, date, time, station)
-        result_2 = 0
+        result_2 = get_user_station_info(address, date, time, station)
+
         return render_template("home.html", data=result, box=result_2)
     else:
+        try:
+            with connection.cursor() as cursor:
+                sql = 'SELECT * FROM staticData'
+                cursor.execute(sql)
+                result = cursor.fetchall()
+        except:
+            print('Error')
+
         return render_template("home.html", data=result)
 
 @app.route("/about") # Tells the browser where to look
