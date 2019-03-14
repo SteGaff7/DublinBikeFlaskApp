@@ -9,10 +9,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
-  
+
 </head>
-    
+
 <style>
+
+    table, th, td {
+      border: 1px solid black;
+    }
     .filter {padding-top: 2%; font-size: 10pt; padding-bottom: 0%; margin-bottom: 0px; margin-right: 0%;}
 
     #address {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 725px; margin-left: 3%; }
@@ -20,30 +24,45 @@
     #date {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 25%;margin-left: 3%; margin-bottom: 0px; }
 
     #time {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 25%;}
-    
+
     #gobutton { border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 25%;margin-left: 3%; margin-bottom: 0px;}
 
     #gobutton:hover {color: white; background-color: #234a55; }
-    
+
     .form-control {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 20%; margin-left: 3%;}
-    
+
     label {margin-left: 3%; padding-bottom: 0px; padding-top: 0px;}
-    
+
     #googlemap {width: 50%; height: 325px; margin-top: 1%; margin-left: 3%;}
-    
+
     #radiobutton1 {margin-left: 3%; margin-right: 1%;}
     #radiobutton2 {margin-left: 1%; margin-right: 1%;}
     #radiobutton3 {margin-left: 1%; margin-right: 1%;}
-    
+
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
-    
+
+
+    #popUp {
+      font-size: 25px;
+    }
+
+
+
+    /*.popUp {
+      border-collapse: collapse;
+      border-radius: 3px;
+      padding: 4px;
+      font-size: 25px;
+      text-align: center;
+    }*/
+
     <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
-    
+
 </style>
-    
+
 <body>
 
-   <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1> 
+   <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -51,7 +70,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -64,9 +83,9 @@
     </div>
   </div>
 </nav>
-    
-    
-<div class="filter"> 
+
+
+<div class="filter">
                 <form id="filter" method="post">
                     <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
                     <input type="date" id="date" data-date-inline-picker="true" />
@@ -77,42 +96,85 @@
                     <input type="radio" name ="station" id="radiobutton3"> Drop off a bike<br>
                 </form>
 </div>
- 
- 
- <!-- GOOGLE MAP INTERFACE -->
-<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>    
-<h3>My Google Maps Demo</h3>
-<div id="map">Map goes here</div>
 
-    
+
+ <!-- GOOGLE MAP INTERFACE -->
+<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
+<h3>My Google Maps Demo</h3>
+<div id="map" style="height:600px" >Map goes here</div>
+
+
+
 <footer class="container-fluid">
     <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
 </footer>
 
 <script>
-	
-	function initMap() {
-	// The map, centered at Stephens Green
-	  var map = new google.maps.Map(
-	      document.getElementById('map'), {zoom: 16, center: {lat:  53.3375, lng: -6.26199}});
-	      
-		{% for item in data %}
-			var statNum;
-			statNum = '{{item[0]}}';
-			statName = '{{item[2]}}';
-			statLat = '{{item[3]}}';
-			statLng = '{{item[4]}}';
-			var marker = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map});
-			<!--document.getElementById("test").innerHTML += '{{item}}';-->
-			
-		{% endfor %}
-		
-	}
-	</script>
-	
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&callback=initMap">
-	</script>
+function initMap() {
+// The map, centered at Stephens Green
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 14, center: {lat:  53.3375, lng: -6.26199}});
 
+  {% for item in data %}
+  /*Index each item and assign to variables below*/
+    statNum = '{{item[0]}}';
+    statName = '{{item[2]}}';
+    statLat = '{{item[3]}}';
+    statLng = '{{item[4]}}';
+
+    /*Create a marker with the name marker+stationNumber*/
+    var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map});
+    marker{{item[0]}}.metadata = {type: "point", id: {{item[0]}}};
+
+    var infowindow{{item[0]}} = new google.maps.InfoWindow({
+    content: "<div id='popUp'><span id='name"+{{item[0]}}+"'><b>Name: </b></span><br>"+
+    "<span id='bikes"+{{item[0]}}+"'><b>Bikes: </b></span><br>"+
+    "<span id='stands"+{{item[0]}}+"'><b>Stands Free: </b></span></div>"
+    });
+
+    /*var infowindow{{item[0]}} = new google.maps.InfoWindow({
+    content: "<table id='popUp"+{{item[0]}}+"'><tr><th>Name</th><th>Number</th><th>Bikes Available</th><th>Stands Available</th></tr></table>"
+    });*/
+
+    /*var infowindow{{item[0]}} = new google.maps.InfoWindow({
+    content: "<table class='popUp'><tr><td>Name</td><td id='name"+{{item[0]}}+"'></td></tr>"+
+    "<tr><td>Bikes</td><td id='bikes"+{{item[0]}}+"'></td></tr>"+
+    "<tr><td>Stands</td><td id='stands"+{{item[0]}}+"'></td></tr></table>"
+    });*/
+
+
+    /*Add an onclick function unique to each marker*/
+    marker{{item[0]}}.addListener('click', function() {
+          infowindow{{item[0]}}.open(map, marker{{item[0]}});
+          map.setZoom(16);
+          map.setCenter(marker{{item[0]}}.getPosition());
+          /* Use JQuery to load this info into the id "info" */
+          /*$("#info").load("/retrieve/"+marker{{item[0]}}.metadata.id);*/
+          $.getJSON("retrieve/"+marker{{item[0]}}.metadata.id, function(jsonData) {
+            var str = "";
+            $.each( jsonData, function( key, val ) {
+              str += val;
+              });
+
+            var splitArray = str.split(",");
+            var last_update = splitArray[0];
+            var number = splitArray[1];
+            var name = splitArray[2];
+            var available_bikes = splitArray[3];
+            var available_stands = splitArray[4];
+
+            document.getElementById("name"+{{item[0]}}).innerHTML += name;
+            document.getElementById("bikes"+{{item[0]}}).innerHTML += available_bikes;
+            document.getElementById("stands"+{{item[0]}}).innerHTML += available_stands;
+
+          });
+        });
+  {% endfor %}
+}
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&callback=initMap">
+</script>
 </body>
 </html>

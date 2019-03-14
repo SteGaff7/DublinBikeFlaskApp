@@ -1,5 +1,5 @@
 import time 
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import pymysql
 
 app = Flask(__name__, static_url_path='')
@@ -14,7 +14,6 @@ def connect_to_database():
    connection = pymysql.connect(host, user=user, passwd=password, db=dbname)
    return connection
 
-connection = connect_to_database()
 
 #Establish connection and assign to connection
 connection = connect_to_database()
@@ -31,6 +30,15 @@ def home():
         print('Error')
         
     return render_template("home.html", data=result)
+
+@app.route('/retrieve/<stationNumber>')
+def retrieve(stationNumber):
+    query = "select max(last_update), number, name, available_bikes, available_stands from dynamicData where number="+str(stationNumber)
+    with connection.cursor() as cursor:
+        cursor.execute(query)
+        result = cursor.fetchall()
+    data = jsonify(result)
+    return data
 
 @app.route("/about") # Tells the browser where to look
 def How_it_works():
