@@ -1,6 +1,9 @@
 import time 
 from flask import Flask, render_template, jsonify
 import pymysql
+import urllib.request
+import json
+from mysql.connector.errorcode import CR_INSECURE_API_ERR
 
 app = Flask(__name__, static_url_path='')
 
@@ -20,24 +23,28 @@ connection = connect_to_database()
 
 @app.route("/home") # Tells the browser where to look
 def home():
-    try:
+    try:    
         with connection.cursor() as cursor:
-            sql = 'SELECT * FROM staticData'
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            print(result)
+                sql = 'SELECT * FROM currentData'
+                cursor.execute(sql)
+                currentData = cursor.fetchall()
+            
     except:
-        print('Error')
-        
-    return render_template("home.html", data=result)
+       print('Error')
+
+    return render_template("home.html", Data=currentData)
 
 @app.route('/retrieve/<stationNumber>')
 def retrieve(stationNumber):
-    query = "select max(last_update), number, name, available_bikes, available_stands from dynamicData where number="+str(stationNumber)
+    
+    query = "select available_bikes, available_stands, last_update from currentData where number="+str(stationNumber)
     with connection.cursor() as cursor:
         cursor.execute(query)
+        connection.commit()
         result = cursor.fetchall()
     data = jsonify(result)
+    #print(query)
+    #print(result)
     return data
 
 @app.route("/about") # Tells the browser where to look
