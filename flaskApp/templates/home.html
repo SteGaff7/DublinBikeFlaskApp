@@ -70,7 +70,7 @@
                     <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..." value="{{request.form.address}}"><br><br>
                     <input type="date" name="date" id="date" data-date-inline-picker="true" value="{{request.form.date}}">
                     <input type="time" name="time" id="time" value="{{request.form.time}}"><br><br>
-                    <input type='submit' id="gobutton" onclick='boxDisplay()'></input><br><br>
+                    <input type='submit' id="gobutton"></input><br><br>
                     <input type="radio" name="station" id="radiobutton1" value='all'> Display all stations
                     <input type="radio" name="station" id="radiobutton2" value='bikes'>  Collect a bike
                     <input type="radio" name="station" id="radiobutton3" value='stands'> Drop off a bike<br>
@@ -113,9 +113,7 @@
 
     {% endfor %}
 
-
     document.getElementById("analytics").style.display = null;
-
 
     document.getElementById('analytics').innerHTML = "Box will go here";
   }
@@ -140,14 +138,6 @@
 	}
 {% endif %}
 
-/* function boxDisplay() {
-  var x = document.getElementById("analytics");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-} */
 
 </script>
 
