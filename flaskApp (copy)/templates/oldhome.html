@@ -46,16 +46,22 @@
       font-size: 25px;
     }
 
+
+
+    /*.popUp {
+      border-collapse: collapse;
+      border-radius: 3px;
+      padding: 4px;
+      font-size: 25px;
+      text-align: center;
+    }*/
+
     <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
 
 </style>
 
-
-
-
 <body>
 
-<!-- HEADER AND NAV BAR -->
    <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
 
 <nav class="navbar navbar-inverse">
@@ -78,18 +84,18 @@
   </div>
 </nav>
 
-<!-- BUTTONS -->
+
 <div class="filter">
                 <form id="filter" method="post">
                     <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
                     <input type="date" id="date" data-date-inline-picker="true" />
                     <input type="time" id="time" ><br><br>
                     <button id="gobutton">Go!</button><br><br>
-                    <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
-                    <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
-                    <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
-
-                    <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
+                    <input type="radio" name="station" id="radiobutton1"> Display all stations
+                    <input type="radio" name="station" id="radiobutton2">  Collect a bike
+                    <input type="radio" name ="station" id="radiobutton3"> Drop off a bike<br>
+                    <input type="button" value="Click me" onclick="BikesAvail()">
+                    <input type="button" value="Click me" onclick="setMapOnBikesAvail(map)">
                 </form>
 </div>
 
@@ -100,7 +106,8 @@
 <p id="Test"></p>
 <div id="map" style="height:600px; width:1300px; margin-left:10%; margin-bottom:100px;" >Map goes here</div>
 
- <!-- FOOTER -->
+
+
 <footer class="container-fluid" style="position:static">
     <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
 </footer>
@@ -111,86 +118,139 @@
 var map;
 var markers = [];
 
+
+
+
 function initMap() {
 // The map, centered at Stephens Green
   map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 14, center: {lat:  53.347082, lng: -6.264192}});
+      document.getElementById('map'), {zoom: 14, center: {lat:  53.3375, lng: -6.26199}});
+
+      $.get("retrieve2", function(result) {
+        var str = "";
+        $.each( result, function( key, val ) {
+          str += val;
+        });
+
+        var splitArray = str.split(",");
+        var available_bikes = splitArray[3];
+        var available_stands = splitArray[4];
+      });
 
 
-    {% for item in Data %}
 
-      statNum = {{item[0]}};
-      statName = '{{item[1]}}';
-      statStatus = '{{item[2]}}';
-      statTotalStands = parseFloat({{item[3]}});
-      statAvailBikes = parseFloat({{item[4]}});
-      statAvailStands = parseFloat({{item[5]}});
-      statTime = {{item[6]}};
-
-      statBank = '{{item[7]}}';
-      if (statBank == 0) {
-        statBank = "No";
-      }
-      else {
-        statBank = "Yes";
-      }
-
-      statLat = '{{item[8]}}';
-      statLng = '{{item[9]}}';
-      statAddress = '{{item[10]}}';
-
-      statDate = new Date(statTime);
-
-      statHours = statDate.getHours();
-      if (statHours < 10) {
-        statHours = "0" + statHours;
-      }
-
-      statMins = statDate.getMinutes();
-      if (statMins < 10) {
-        statMins = "0" + statMins;
-      }
-
-      statSecs = statDate.getSeconds();
+  {% for item in data %}
+  /*Index each item and assign to variables below*/
+    statNum = '{{item[0]}}';
+    statName = '{{item[2]}}';
+    statLat = '{{item[3]}}';
+    statLng = '{{item[4]}}';
 
     /*Create a marker with the name marker+stationNumber*/
-    var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map, });
+    var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map});
 
-    marker{{item[0]}}.metadata = {type: "point", id: statNum, name: statName, bikes: statAvailBikes,
-      stands: statAvailStands, banking: statBank, totalStands: statTotalStands, status: statStatus,
-      address: statAddress, last_checked: statTime, time: statDate, hour: statHours, min: statMins, sec: statSecs };
+    marker{{item[0]}}.metadata = {type: "point", id: {{item[0]}}};
 
+    /*marker{{item[0]}}.metadata = {type: "point", bikes: available_bikes, stands: available_stands, id: {{item[0]}}};
+    */
+
+    /*
+    $.get("retrieve2", function(result) {
+      var str = "";
+      $.each( result, function( key, val ) {
+        str += val;
+      });
+
+      var splitArray = str.split(",");
+      var available_bikes = splitArray[3];
+      var available_stands = splitArray[4];
+    });
+    */
+
+/*
+  $.getJSON("retrieve/42", function(jsonData) {
+      var str = "";
+      $.each( jsonData, function( key, val ) {
+        str += val;
+        });
+
+      var splitArray = str.split(",");
+      var last_update = splitArray[0];
+      var number = splitArray[1];
+      var name = splitArray[2];
+      var available_bikes = splitArray[3];
+      var available_stands = splitArray[4];
+
+      marker{{item[0]}}.metadata = {type: "point", bikes: available_bikes, stands: available_stands, id: {{item[0]}}};
+
+    });
+*/
+
+
+
+
+/*
+    $.getJSON("retrieve/"+{{item[0]}}, function(jsonData) {
+      var str = "";
+      $.each( jsonData, function( key, val ) {
+        str += val;
+      });
+
+      var splitArray = str.split(",");
+      var available_bikes = splitArray[3];
+      var available_stands = splitArray[4];
+
+    });
+    */
     markers.push(marker{{item[0]}});
+
+
+
+
+    /*marker{{item[0]}}.metadata = {type: "point", id: {{item[0]}}};*/
 
     var infowindow{{item[0]}} = new google.maps.InfoWindow({
     content: "<div id='popUp'><span id='name"+{{item[0]}}+"'></span><br>"+
-    "<span id='status"+{{item[0]}}+"'></span><br>"+
-    "<span id='banking"+{{item[0]}}+"'></span><br>"+
     "<span id='bikes"+{{item[0]}}+"'></span><br>"+
-    "<span id='stands"+{{item[0]}}+"'></span><br>"+
-    "<span id='updated"+{{item[0]}}+"'></span></div>"
+    "<span id='stands"+{{item[0]}}+"'></span></div>"
     });
+
+    /*var infowindow{{item[0]}} = new google.maps.InfoWindow({
+    content: "<table id='popUp"+{{item[0]}}+"'><tr><th>Name</th><th>Number</th><th>Bikes Available</th><th>Stands Available</th></tr></table>"
+    });*/
+
+    /*var infowindow{{item[0]}} = new google.maps.InfoWindow({
+    content: "<table class='popUp'><tr><td>Name</td><td id='name"+{{item[0]}}+"'></td></tr>"+
+    "<tr><td>Bikes</td><td id='bikes"+{{item[0]}}+"'></td></tr>"+
+    "<tr><td>Stands</td><td id='stands"+{{item[0]}}+"'></td></tr></table>"
+    });*/
+
 
     /*Add an onclick function unique to each marker*/
     marker{{item[0]}}.addListener('click', function() {
           infowindow{{item[0]}}.open(map, marker{{item[0]}});
           map.setZoom(16);
           map.setCenter(marker{{item[0]}}.getPosition());
-
+          /* Use JQuery to load this info into the id "info" */
+          /*$("#info").load("/retrieve/"+marker{{item[0]}}.metadata.id);*/
           $.get("retrieve/"+marker{{item[0]}}.metadata.id, function(jsonData) {
+            var str = "";
+            $.each( jsonData, function( key, val ) {
+              str += val;
+              });
 
-            marker{{item[0]}}.metadata['bikes'] = jsonData[0][0];
-            marker{{item[0]}}.metadata['stands'] = jsonData[0][1];
-            marker{{item[0]}}.metadata['last_checked'] = jsonData[0][2];
+            var splitArray = str.split(",");
+            var last_update = splitArray[0];
+            var number = splitArray[1];
+            var name = splitArray[2];
+            var available_bikes = splitArray[3];
+            var available_stands = splitArray[4];
 
-            console.log(marker{{item[0]}}.metadata['bikes'] + "<br>" + marker{{item[0]}}.metadata['stands'] + "<br>" + marker{{item[0]}}.metadata['time'] + "<br>" + marker{{item[0]}}.metadata['hour'] + marker{{item[0]}}.metadata['min'] + marker{{item[0]}}.metadata['sec']);
 
-            document.getElementById("name"+{{item[0]}}).innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
-            document.getElementById("status"+{{item[0]}}).innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
-            document.getElementById("banking"+{{item[0]}}).innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
-            document.getElementById("bikes"+{{item[0]}}).innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
-            document.getElementById("stands"+{{item[0]}}).innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
-            document.getElementById("updated"+{{item[0]}}).innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];
+
+            document.getElementById("name"+{{item[0]}}).innerHTML = "Name: " + name;
+            document.getElementById("bikes"+{{item[0]}}).innerHTML ="Bikes: " + available_bikes;
+            document.getElementById("stands"+{{item[0]}}).innerHTML = "Stands: " + available_stands;
 
           });
         });
@@ -204,36 +264,27 @@ function initMap() {
 
 <script>
 
-function clearMarkers() {
+function setMapOnBikesAvail(map) {
   for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap();
-  }
-}
-
-function showAll() {
-  for (var i = 0; i < markers.length; i++) {
+    var x = markers[i].metadata['bikes']
     markers[i].setMap(map);
+    document.getElementById("Test").innerHTML += x + " ";
   }
 }
 
-function collectBike() {
+function BikesAvail() {
   clearMarkers();
-  for (var i = 0; i < markers.length; i++) {
-    if (markers[i].metadata['bikes'] != 0) {
-      markers[i].setMap(map);
-    }
-  }
+  setMapOnBikesAvail(map);
 }
 
-function returnBike() {
-  clearMarkers();
-  for (var i = 0; i < markers.length; i++) {
-    if (markers[i].metadata['stands'] != 0) {
-      markers[i].setMap(map);
-    }
-  }
+function clearMarkers() {
+  setMapOnBikesAvail(null);
 }
 
 </script>
+
+
+
+
 </body>
 </html>
