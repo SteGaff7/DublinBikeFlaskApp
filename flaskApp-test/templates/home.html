@@ -33,7 +33,6 @@
     #radiobutton2 {margin-left: 1%; margin-right: 1%;}
     #radiobutton3 {margin-left: 1%; margin-right: 1%;}
 
-    #mapAnalytics {}
 
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
 
@@ -66,12 +65,12 @@
 </nav>
 
 
-<div class="filter" style=float:left;width:50%;height:250px;>
+<div class="filter" style=float:left;width:48%;height:250px;>
                 <form action="{{ url_for('home') }}" id="filter" method="POST">
                     <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..." value="{{request.form.address}}"><br><br>
                     <input type="date" name="date" id="date" data-date-inline-picker="true" value="{{request.form.date}}">
                     <input type="time" name="time" id="time" value="{{request.form.time}}"><br><br>
-                    <input type='submit' id="gobutton"></input><br><br>
+                    <input type='submit' id="gobutton" onclick='boxDisplay()'></input><br><br>
                     <input type="radio" name="station" id="radiobutton1" value='all'> Display all stations
                     <input type="radio" name="station" id="radiobutton2" value='bikes'>  Collect a bike
                     <input type="radio" name="station" id="radiobutton3" value='stands'> Drop off a bike<br>
@@ -83,17 +82,17 @@
 <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
 
 <div id="mapAnalytics">
-    <div id="analytics" style=height:800px;float:right;width:50%>Analytics will go Here</div>
+    <div id="analytics" style=height:650px;width:50%;float:right;background-color:yellow;display:none;>Analytics will go Here</div>
     <h3 style=>My Google Maps Demo</h3>
     <div id="map" style=height:400px;width:50%;float:left;>Map goes here</div>
 
 </div>
 
-<div>
-  <footer class="container-fluid">
+
+<footer class="container-fluid">
       <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
-  </footer>
-</section>
+</footer>
+
 
 <script>
 
@@ -114,7 +113,11 @@
 
     {% endfor %}
 
-    document.getElementById('analytics').innerHTML = "Hello";
+
+    document.getElementById("analytics").style.display = null;
+
+
+    document.getElementById('analytics').innerHTML = "Box will go here";
   }
 
 {% else %}
@@ -137,15 +140,14 @@
 	}
 {% endif %}
 
-function toggle_display(){
-  el = document.querySelector('.content_section');
-
-  if(el.style.visibility == 'hidden'){
-      el.style.visibility = 'visible'
-  }else{
-     el.style.visibility = 'hidden'
+/* function boxDisplay() {
+  var x = document.getElementById("analytics");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
   }
-}
+} */
 
 </script>
 

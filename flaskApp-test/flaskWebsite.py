@@ -33,7 +33,7 @@ def get_user_station_info(address, date, time, station):
 @app.route("/home", methods=["POST", "GET"]) # Tells the browser where to look
 def home():
     if request.method == "POST":
-        
+
         try:
             with connection.cursor() as cursor:
                 sql = 'SELECT * FROM staticData'
@@ -47,7 +47,9 @@ def home():
         time = request.form['time']
         station = request.form['station']
 
-        result_2 = get_user_station_info(address, date, time, station)
+        get_user_station_info(address, date, time, station)
+
+        result_2 = (address, date, time, station)
 
         return render_template("home.html", data=result, box=result_2)
     else:
