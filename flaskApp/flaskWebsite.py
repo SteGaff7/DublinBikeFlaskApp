@@ -58,6 +58,24 @@ def retrieve(stationNumber):
     #print(result)
     return data
 
+@app.route('/algo/<stuff>')
+def predictive(stuff):
+    #stuff = jsonify(stuff)
+    return stuff
+
+@app.route('/weather/<timestamp>')
+def weatherForecast(timestamp):
+    with urllib.request.urlopen("http://api.openweathermap.org/data/2.5/forecast?id=7778677&APPID=0927fd5dff272fdbd486187e54283310") as url:
+        data = json.loads(url.read().decode())
+        
+        time = data["list"][0]["dt"]
+        temp = data["list"][0]["main"]["temp"]
+        weather_type = data["list"][0]["weather"][0]["main"]
+        icon = data["list"][0]["weather"][0]["icon"]
+        date_time = data["list"][0]["dt_txt"]
+        
+    return str(time) + str(temp) + str(weather_type) + str(icon) + str(date_time)
+
 @app.route("/about") # Tells the browser where to look
 def How_it_works():
     return render_template('how_it_works.html', title='About') # This points to the html page
