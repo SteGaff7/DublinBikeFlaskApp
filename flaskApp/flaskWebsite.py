@@ -1,4 +1,4 @@
-import time 
+import time
 from flask import Flask, render_template, jsonify
 import pymysql
 import urllib.request
@@ -21,14 +21,25 @@ def connect_to_database():
 #Establish connection and assign to connection
 connection = connect_to_database()
 
-@app.route("/home") # Tells the browser where to look
+def get_user_station_info(address, date, time, station):
+
+    f= open("print.txt","w")
+
+    f.write("This is the the address: " + address + "\n")
+    f.write("This is the the address: " + date + "\n")
+    f.write("This is the the address: " + time + "\n")
+    f.write("This is the preference: " + station + "\n")
+
+    return("Okay")
+
+@app.route("/home", methods=["POST", "GET"]) # Tells the browser where to look
 def home():
-    try:    
+    try:
         with connection.cursor() as cursor:
                 sql = 'SELECT * FROM currentData'
                 cursor.execute(sql)
                 currentData = cursor.fetchall()
-            
+
     except:
        print('Error')
 
@@ -36,7 +47,7 @@ def home():
 
 @app.route('/retrieve/<stationNumber>')
 def retrieve(stationNumber):
-    
+
     query = "select available_bikes, available_stands, last_update from currentData where number="+str(stationNumber)
     with connection.cursor() as cursor:
         cursor.execute(query)
