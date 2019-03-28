@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
 </head>
 
 <style>
@@ -56,7 +57,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>conflicts
         <span class="icon-bar"></span>
       </button>
     </div>
@@ -73,13 +74,36 @@
 
 <!-- BUTTONS -->
 <div class="filter">
-                <form id="filter" method="post">
+          <button onclick="predictive()">Button</button>
+
+
+          <form id= "myForm" onsubmit="predictive()">
+          <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
+              <input type="date" id="date" data-date-inline-picker="true">
+              <input type="time" id="time" ><br><br>
+              <input type="submit"><br>
+          </form>
+
+          <!--
+                <form id="filter">
                     <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
-                    <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
-                    <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
-                    <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
-                    <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
+
+                    <input type="date" id="date" data-date-inline-picker="true">
+                    <input type="time" id="time" ><br><br>
+                    <input type="button" value="Search" onclick="predictive()"><br>
+
                 </form>
+                -->
+
+                <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
+                <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
+                <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
+                <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
+</div>
+
+
+<div id="testDiv">
+
 </div>
 
 <div id="Analytics">
@@ -96,16 +120,31 @@
  <!-- GOOGLE MAP INTERFACE -->
 <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
 <p id="Test"></p>
+
 <div id="map" style="height:500px; width:50%; margin-left:1%; margin-top:1%; margin-bottom:2%;"  >Map goes here</div>
+<div id="box" style="width:40%; height: 600px; background-color:lightblue; float:right;">
+  <div id="title" style="height:10%;"><h1>REAL TIME / DATA</h1></div>
+  <div id="data" style="height:30%; background-color: blue;">
+    <h2>DATA</h2>
+      <span id='name2'></span><br>
+      <span id='status2'></span><br>
+      <span id='banking2'></span><br>
+      <span id='bikes2'></span><br>
+      <span id='stands2'></span><br>
+      <span id='updated2'></span>
+  </div>
+  <div id="weather" style="height:30%; background-color:lightgreen;"><h2>WEATHER</h2></div>
+  <div id="graph" style="height:30%; background-color:lightgrey;"><h2>GRAPH</h2></div>
+</div>
 
  <!-- FOOTER -->
-<footer class="container-fluid" style="position:static">
+<footer class="container-fluid" style="position:static; clear:both;">
     <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
 </footer>
 
 
-<script>
 
+<script>
 
 var map;
 var markers = [];
@@ -153,7 +192,7 @@ function initMap() {
       statSecs = statDate.getSeconds();
 
     /*Create a marker with the name marker+stationNumber*/
-    var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, map: map, });
+    var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, icon: {url: '/images/bike.png', scaledSize: new google.maps.Size(25, 25)}, map: map, });
 
     marker{{item[0]}}.metadata = {type: "point", id: statNum, name: statName, bikes: statAvailBikes,
       stands: statAvailStands, banking: statBank, totalStands: statTotalStands, status: statStatus,
@@ -162,19 +201,20 @@ function initMap() {
     markers.push(marker{{item[0]}});
 
     var infowindow{{item[0]}} = new google.maps.InfoWindow({
-    content: "<div id='popUp'><span id='name"+{{item[0]}}+"'></span><br>"+
+    content: "<div id='popUp'>" +
+    "<span id='name"+{{item[0]}}+"'></span><br>"+
     "<span id='status"+{{item[0]}}+"'></span><br>"+
-    "<span id='banking"+{{item[0]}}+"'></span><br>"+
+    /*"<span id='banking"+{{item[0]}}+"'></span><br>"+*/
     "<span id='bikes"+{{item[0]}}+"'></span><br>"+
     "<span id='stands"+{{item[0]}}+"'></span><br>"+
-    "<span id='updated"+{{item[0]}}+"'></span></div>"
+    /*"<span id='updated"+{{item[0]}}+"'></span>*/"</div>"
     });
 
     /*Add an onclick function unique to each marker*/
     marker{{item[0]}}.addListener('click', function() {
-          infowindow{{item[0]}}.open(map, marker{{item[0]}});
           map.setZoom(16);
           map.setCenter(marker{{item[0]}}.getPosition());
+
 
           $.get("retrieve/"+marker{{item[0]}}.metadata.id, function(jsonData) {
 
@@ -184,14 +224,25 @@ function initMap() {
 
             console.log(marker{{item[0]}}.metadata['bikes'] + "<br>" + marker{{item[0]}}.metadata['stands'] + "<br>" + marker{{item[0]}}.metadata['time'] + "<br>" + marker{{item[0]}}.metadata['hour'] + marker{{item[0]}}.metadata['min'] + marker{{item[0]}}.metadata['sec']);
 
+
+            document.getElementById("name2").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
+            document.getElementById("status2").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
+            document.getElementById("banking2").innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
+            document.getElementById("bikes2").innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("stands2").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("updated2").innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];
+
+
+
             document.getElementById("name"+{{item[0]}}).innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
             document.getElementById("status"+{{item[0]}}).innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
-            document.getElementById("banking"+{{item[0]}}).innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
+            /*document.getElementById("banking"+{{item[0]}}).innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];*/
             document.getElementById("bikes"+{{item[0]}}).innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
             document.getElementById("stands"+{{item[0]}}).innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
-            document.getElementById("updated"+{{item[0]}}).innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];
+            /*document.getElementById("updated"+{{item[0]}}).innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];*/
 
           });
+          infowindow{{item[0]}}.open(map, marker{{item[0]}});
         });
   {% endfor %}
 }
@@ -232,6 +283,17 @@ function returnBike() {
     }
   }
 }
+
+function predictive() {
+  /*Prevent page reloading each time function is run*/
+  event.preventDefault();
+  var address = document.getElementById("address").value;
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+  $.get("algo/" + date + time + address, function(returnedData) {
+    document.getElementById("Test").innerHTML= returnedData;
+  });
+};
 
 </script>
 </body>
