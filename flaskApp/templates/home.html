@@ -12,49 +12,37 @@
 </head>
 
 <style>
-
     table, th, td {
       border: 1px solid black;
     }
-    .filter {padding-top: 2%; font-size: 10pt; padding-bottom: 0%; margin-bottom: 0px; margin-right: 0%;}
-
-    #address {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 1%; width: 90%; margin-left: 7%; }
-
-    #date {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 45%;margin-left: 7%; margin-bottom: 0px; }
-
+      .filter {padding-top: 2%; font-size: 10pt; padding-bottom: 0%; margin-bottom: 10px; margin-right: 0%; float: left;}
+    #address {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 1%; width: 600px; margin-left: 10%; }
+    #station_name {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 90%; margin-left: 5%; }
+    #date {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 45%; margin-left: 5%; margin-bottom: 0px; }
     #time {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 45%;}
-
-    #gobutton { border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 40%;margin-left: 7%; margin-bottom: 0px;}
-
+    #gobutton { border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 40%;margin-left: 5%; margin-bottom: 0px;}
     #gobutton:hover {color: white; background-color: #234a55; }
-
     .form-control {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 20%; margin-left: 3%;}
-
     label {margin-left: 3%; padding-bottom: 0px; padding-top: 0px;}
-
     #googlemap {width: 50%; height: 325px; margin-top: 1%; margin-left: 3%;}
-
-    #radiobutton1 {margin-left: 3%; margin-right: 1%;}
-    #radiobutton2 {margin-left: 1%; margin-right: 1%;}
-    #radiobutton3 {margin-left: 1%; margin-right: 1%;}
-
-
+    #radiobutton1 {margin-left: 10%; margin-right: 1%;}
+    #radiobutton2 {margin-left: 10%; margin-right: 1%;}
+    #radiobutton3 {margin-left: 10%; margin-right: 1%;}
+    #Analytics {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
-
     <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
-
 </style>
 
+
+
 <body>
-
    <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>conflicts
         <span class="icon-bar"></span>
       </button>
     </div>
@@ -69,47 +57,41 @@
   </div>
 </nav>
 
+
+
 <!-- BUTTONS -->
 <div class="filter">
-          <button onclick="predictive()">Button</button>
 
+  <!--SEARCH BUTTON-->
+  <div id="locationField">
+    <input id="autocomplete"
+           placeholder="Enter your address"
+           onFocus="geolocate()"
+           type="text"/>
+  </div>
 
-          <form id= "myForm" onsubmit="predictive()">
-          <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
-              <input type="date" id="date" data-date-inline-picker="true">
-              <input type="time" id="time" ><br><br>
-              <input type="submit"><br>
-          </form>
-
-          <!--
-                <form id="filter">
-                    <input type="text" name="address" id="address" placeholder=" Enter address, area or eircode..."><br><br>
-                    <input type="date" id="date" data-date-inline-picker="true">
-                    <input type="time" id="time" ><br><br>
-                    <input type="button" value="Search" onclick="predictive()"><br>
-                </form>
-                -->
-
-                <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
-                <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
-                <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
-                <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
-</div>
-
-
-<div id="testDiv">
+  <!--RADIO BUTTONS-->
+  <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
+  <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
+  <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
+  <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
 
 </div>
 
 
- <!-- GOOGLE MAP INTERFACE -->
-<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
-<h3>My Google Maps Demo</h3>
-<p id="Test"></p>
-<div id="map" style="height:600px; width:50%; float:left;  margin-left:7.5%; margin-bottom:100px;" >Map goes here</div>
-<div id="box" style="width:40%; height: 600px; background-color:lightblue; float:right;">
+<!--PREDICTIVE DATA-->
+<div id="Analytics">
+<div id="Form">
+  <form id= "myForm" onsubmit="predictive()">
+    <input type="text" name="station_name" id="station_name" placeholder=" Enter station name..."><br><br>
+      <input type="date" id="date" data-date-inline-picker="true">
+      <input type="time" id="time" ><br><br>
+      <input type="submit"><br>
+  </form>
+  </div>
+
   <div id="title" style="height:10%;"><h1>REAL TIME / DATA</h1></div>
-  <div id="data" style="height:30%; background-color: blue;">
+  <div id="data" style="height:20%; background-color: blue;">
     <h2>DATA</h2>
       <span id='name2'></span><br>
       <span id='status2'></span><br>
@@ -118,9 +100,23 @@
       <span id='stands2'></span><br>
       <span id='updated2'></span>
   </div>
-  <div id="weather" style="height:30%; background-color:lightgreen;"><h2>WEATHER</h2></div>
-  <div id="graph" style="height:30%; background-color:lightgrey;"><h2>GRAPH</h2></div>
+  <div id="weather" style="height:20%; background-color:lightgreen;"><h2>WEATHER</h2></div>
+  <div id="graph" style="height:20%; background-color:lightgrey;"><h2>GRAPH</h2></div>
 </div>
+
+
+
+<div id="testDiv">
+</div>
+
+
+
+
+ <!-- GOOGLE MAP INTERFACE -->
+<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
+
+<div id="map" style="height:500px; width:55%; margin-left:1%; margin-top:1%; margin-bottom:2%;"  >Map goes here</div>
+
 
  <!-- FOOTER -->
 <footer class="container-fluid" style="position:static; clear:both;">
@@ -129,19 +125,31 @@
 
 
 
+<!--SCRIPTS-->
+
 <script>
 
 var map;
 var markers = [];
-
 function initMap() {
-// The map, centered at Stephens Green
+  // AutoComplete object
+  new google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+  // The map, centered at Stephens Green
   map = new google.maps.Map(
       document.getElementById('map'), {zoom: 14, center: {lat:  53.347082, lng: -6.264192}});
 
+  // An info window shared by all markers
+  var infowindow = new google.maps.InfoWindow({
+      content: "<div id='popUp'>" +
+      "<span id='name'></span><br>"+
+      "<span id='status'></span><br>"+
+      "<span id='bikes'></span><br>"+
+      "<span id='stands'></span><br>"+
+      "</div>"
+    });
 
     {% for item in Data %}
-
       statNum = {{item[0]}};
       statName = '{{item[1]}}';
       statStatus = '{{item[2]}}';
@@ -149,7 +157,6 @@ function initMap() {
       statAvailBikes = parseFloat({{item[4]}});
       statAvailStands = parseFloat({{item[5]}});
       statTime = {{item[6]}};
-
       statBank = '{{item[7]}}';
       if (statBank == 0) {
         statBank = "No";
@@ -157,59 +164,74 @@ function initMap() {
       else {
         statBank = "Yes";
       }
-
       statLat = '{{item[8]}}';
       statLng = '{{item[9]}}';
       statAddress = '{{item[10]}}';
-
       statDate = new Date(statTime);
-
       statHours = statDate.getHours();
       if (statHours < 10) {
         statHours = "0" + statHours;
       }
-
       statMins = statDate.getMinutes();
       if (statMins < 10) {
         statMins = "0" + statMins;
       }
-
       statSecs = statDate.getSeconds();
 
     /*Create a marker with the name marker+stationNumber*/
     var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, icon: {url: '/images/bike.png', scaledSize: new google.maps.Size(25, 25)}, map: map, });
 
+    console.log(marker{{item[0]}});
+
     marker{{item[0]}}.metadata = {type: "point", id: statNum, name: statName, bikes: statAvailBikes,
       stands: statAvailStands, banking: statBank, totalStands: statTotalStands, status: statStatus,
-      address: statAddress, last_checked: statTime, time: statDate, hour: statHours, min: statMins, sec: statSecs };
+      address: statAddress, last_checked: statTime, time: statDate, hour: statHours, min: statMins, sec: statSecs, icon: {} };
+
+
+    /* Function to assign appropriate icon */
+    markerIconBikesAvail(marker{{item[0]}});
 
     markers.push(marker{{item[0]}});
 
+
+    /* Multiple info window method
     var infowindow{{item[0]}} = new google.maps.InfoWindow({
     content: "<div id='popUp'>" +
     "<span id='name"+{{item[0]}}+"'></span><br>"+
-    "<span id='status"+{{item[0]}}+"'></span><br>"+
+    "<span id='status"+{{item[0]}}+"'></span><br>"+*/
     /*"<span id='banking"+{{item[0]}}+"'></span><br>"+*/
-    "<span id='bikes"+{{item[0]}}+"'></span><br>"+
-    "<span id='stands"+{{item[0]}}+"'></span><br>"+
-    /*"<span id='updated"+{{item[0]}}+"'></span>*/"</div>"
-    });
+    /*"<span id='bikes"+{{item[0]}}+"'></span><br>"+
+    "<span id='stands"+{{item[0]}}+"'></span><br>"+*/
+    /*"<span id='updated"+{{item[0]}}+"'></span>*//*"</div>"
+    });*/
 
     /*Add an onclick function unique to each marker*/
     marker{{item[0]}}.addListener('click', function() {
           map.setZoom(16);
           map.setCenter(marker{{item[0]}}.getPosition());
 
-
           $.get("retrieve/"+marker{{item[0]}}.metadata.id, function(jsonData) {
-
             marker{{item[0]}}.metadata['bikes'] = jsonData[0][0];
             marker{{item[0]}}.metadata['stands'] = jsonData[0][1];
             marker{{item[0]}}.metadata['last_checked'] = jsonData[0][2];
 
-            console.log(marker{{item[0]}}.metadata['bikes'] + "<br>" + marker{{item[0]}}.metadata['stands'] + "<br>" + marker{{item[0]}}.metadata['time'] + "<br>" + marker{{item[0]}}.metadata['hour'] + marker{{item[0]}}.metadata['min'] + marker{{item[0]}}.metadata['sec']);
 
+            statDate = new Date(jsonData[0][2]);
+            statHours = statDate.getHours();
+            if (statHours < 10) {
+              statHours = "0" + statHours;
+            }
+            marker{{item[0]}}.metadata['hour'] = statHours;
 
+            statMins = statDate.getMinutes();
+            if (statMins < 10) {
+              statMins = "0" + statMins;
+            }
+            marker{{item[0]}}.metadata['min'] = statMins;
+
+            console.log(marker{{item[0]}}.metadata['bikes'] + "<br>" + marker{{item[0]}}.metadata['stands'] + "<br>" + marker{{item[0]}}.metadata['hour'] + ":" +  marker{{item[0]}}.metadata['min']);
+
+            /* Display data in the box to the side */
             document.getElementById("name2").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
             document.getElementById("status2").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
             document.getElementById("banking2").innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
@@ -217,69 +239,160 @@ function initMap() {
             document.getElementById("stands2").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
             document.getElementById("updated2").innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];
 
-
-
+            /* Multiple info window methods
             document.getElementById("name"+{{item[0]}}).innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
-            document.getElementById("status"+{{item[0]}}).innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
+            document.getElementById("status"+{{item[0]}}).innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];*/
             /*document.getElementById("banking"+{{item[0]}}).innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];*/
-            document.getElementById("bikes"+{{item[0]}}).innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
-            document.getElementById("stands"+{{item[0]}}).innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            /*document.getElementById("bikes"+{{item[0]}}).innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("stands"+{{item[0]}}).innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];*/
             /*document.getElementById("updated"+{{item[0]}}).innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];*/
 
+
+
+
+            /* 1 info window method */
+            document.getElementById("name").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
+            document.getElementById("status").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
+            document.getElementById("bikes").innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("stands").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
           });
-          infowindow{{item[0]}}.open(map, marker{{item[0]}});
+          infowindow.open(map, marker{{item[0]}});
         });
   {% endfor %}
 }
+
 </script>
 
-<script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&callback=initMap">
-</script>
 
 <script>
+
+var autocomplete;
+
+function initAutocomplete() {
+  /*Create the autocomplete object, restricting the search predictions to
+   geographical location types. */
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+
+  /* Avoid paying for data that you don't need by restricting the set of
+   place fields that are returned to just the address components.
+   Also included the geometry */
+  autocomplete.setFields(['address_components', 'geometry']);
+
+  /* When the user selects an address from the drop-down, populate the
+   address fields in the form. */
+  autocomplete.addListener('place_changed', centerPlace);
+}
+
+function centerPlace() {
+  /* Get the place details from the autocomplete object. */
+  var place = autocomplete.getPlace();
+  map.setCenter(place.geometry.location);
+  }
+
+/* Bias the autocomplete object to the user's geographical location,
+ as supplied by the browser's 'navigator.geolocation' object. */
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var circle = new google.maps.Circle(
+          {center: geolocation, radius: position.coords.accuracy});
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+</script>
+
+
+<!--SCRIPT ASYNC-->
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&libraries=places&callback=initMap">
+</script>
+
+
+<!--JAVASCRIPT FUNCTIONS-->
+
+<script>
+
+/* Set marker bike icon according to bike availability */
+function markerIconBikesAvail(marker) {
+  if (marker.metadata['bikes']/marker.metadata['totalStands'] >= 0.6) {
+    var icon = {url:'images/bike_available.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['bikes']/marker.metadata['totalStands'] >= 0.15) {
+    var icon = {url:'images/bike_moderate.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['bikes']/marker.metadata['totalStands'] < 0.15) {
+    var icon = {url:'images/bike_full.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+}
+
+function markerIconStandsAvail(marker) {
+  if (marker.metadata['stands']/marker.metadata['totalStands'] >= 0.6) {
+    var icon = {url:'images/park_available.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+  else if (marker.metadata['stands']/marker.metadata['totalStands'] >= 0.15) {
+    var icon = {url:'images/park_moderate.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['stands']/marker.metadata['totalStands'] < 0.15) {
+    var icon = {url:'images/park_full.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+}
 
 function clearMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap();
   }
 }
-
 function showAll() {
   for (var i = 0; i < markers.length; i++) {
+    markerIconBikesAvail(markers[i]);
     markers[i].setMap(map);
   }
 }
-
 function collectBike() {
   clearMarkers();
   for (var i = 0; i < markers.length; i++) {
     if (markers[i].metadata['bikes'] != 0) {
+      markerIconBikesAvail(markers[i]);
       markers[i].setMap(map);
     }
   }
 }
-
 function returnBike() {
   clearMarkers();
   for (var i = 0; i < markers.length; i++) {
     if (markers[i].metadata['stands'] != 0) {
+      markerIconStandsAvail(markers[i]);
       markers[i].setMap(map);
     }
   }
 }
-
 function predictive() {
   /*Prevent page reloading each time function is run*/
   event.preventDefault();
-  var address = document.getElementById("address").value;
+  var station_name = document.getElementById("station_name").value;
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
-  $.get("algo/" + date + time + address, function(returnedData) {
+  $.get("algo/" + date + time + station_name, function(returnedData) {
     document.getElementById("Test").innerHTML= returnedData;
   });
 };
-
 </script>
 </body>
 </html>

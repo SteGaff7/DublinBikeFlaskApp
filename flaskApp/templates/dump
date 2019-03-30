@@ -1,3 +1,24 @@
 "<span id='banking"+{{item[0]}}+"'></span><br>"+
 "+
 "<span id='updated"+{{item[0]}}+"'></span>
+
+
+
+
+
+<form id= "myForm" onsubmit="center()">
+  <input type="text" name="address2" id="address2" placeholder=" Enter station name..."><br><br>
+  <input type="submit"><br>
+</form>
+
+
+If the place has a geometry, then present it on a map.
+if (place.geometry.viewport) {
+ map.fitBounds(place.geometry.viewport);
+} else {
+
+
+
+
+
+infowindow{{item[0]}}.open(map, marker{{item[0]}});
