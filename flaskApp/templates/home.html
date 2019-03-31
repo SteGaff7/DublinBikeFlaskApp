@@ -30,6 +30,8 @@
     #radiobutton3 {margin-left: 10%; margin-right: 1%;}
     #Analytics {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
+    #Analytics2 {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
+    #weather {box-sizing: border-box;}
     <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
 </style>
 
@@ -71,8 +73,8 @@
   </div>
 
   <!--RADIO BUTTONS-->
-  <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations
-  <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike
+  <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations<br>
+  <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike<br>
   <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
   <!--<input type="button" value="Clear" onclick="clearMarkers()">-->
 
@@ -80,18 +82,22 @@
 
 
 <!--PREDICTIVE DATA-->
-<div id="Analytics">
+
 <div id="Form">
   <form id= "myForm" onsubmit="predictive()">
     <input type="text" name="station_name" id="station_name" placeholder=" Enter station name..."><br><br>
       <input type="date" id="date" data-date-inline-picker="true">
+
+      <!--<input type="date" id="date" class="form-control">-->
+
       <input type="time" id="time" ><br><br>
       <input type="submit"><br>
   </form>
   </div>
 
-  <div id="title" style="height:10%;"><h1>REAL TIME / DATA</h1></div>
-  <div id="data" style="height:20%; background-color: blue;">
+<div id="Analytics2" style="height:700px;">
+  <div id="title" style="height:15%;"><h1>REAL TIME / DATA</h1></div>
+  <div id="data" style="height:25%; background-color: blue;">
     <h2>DATA</h2>
       <span id='name2'></span><br>
       <span id='status2'></span><br>
@@ -100,13 +106,17 @@
       <span id='stands2'></span><br>
       <span id='updated2'></span>
   </div>
-  <div id="weather" style="height:20%; background-color:lightgreen;"><h2>WEATHER</h2></div>
-  <div id="graph" style="height:20%; background-color:lightgrey;"><h2>GRAPH</h2></div>
+  <div id="weather" style="height:25%; background-color:lightgreen;"><h2>WEATHER</h2>
+    <div id="1w", style="width:25%; height: 90%; background-color:red; display: inline-block;"></div><div id="2w", style="width:25%; height: 90%; background-color:white; display: inline-block; "></div><div id="3w", style="width:25%; height: 90%; background-color:blue; display: inline-block;"></div><div id="4w", style="width:25%; height: 90%; background-color:green; display: inline-block;"></div>
+  </div>
+  <div id="graph" style="height:30%; background-color:lightgrey;"><h2>GRAPH</h2></div>
 </div>
 
 
 
 <div id="testDiv">
+  <p id = "Test">
+  </p>
 </div>
 
 
@@ -115,7 +125,7 @@
  <!-- GOOGLE MAP INTERFACE -->
 <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
 
-<div id="map" style="height:500px; width:55%; margin-left:1%; margin-top:1%; margin-bottom:2%;"  >Map goes here</div>
+<div id="map" style="height:700px; width:55%; margin-left:1%; margin-top:1%; margin-bottom:2%;"  >Map goes here</div>
 
 
  <!-- FOOTER -->
@@ -180,8 +190,6 @@ function initMap() {
 
     /*Create a marker with the name marker+stationNumber*/
     var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, icon: {url: '/images/bike.png', scaledSize: new google.maps.Size(25, 25)}, map: map, });
-
-    console.log(marker{{item[0]}});
 
     marker{{item[0]}}.metadata = {type: "point", id: statNum, name: statName, bikes: statAvailBikes,
       stands: statAvailStands, banking: statBank, totalStands: statTotalStands, status: statStatus,
@@ -389,9 +397,59 @@ function predictive() {
   var station_name = document.getElementById("station_name").value;
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
-  $.get("algo/" + date + time + station_name, function(returnedData) {
+
+  $.get("weatherForecast/" + date, function(returnedData) {
+    /*hard coded for now*/
+      document.getElementById("1w").innerHTML= "";
+      document.getElementById("2w").innerHTML= "";
+      document.getElementById("3w").innerHTML= "";
+      document.getElementById("4w").innerHTML= "";
+
+      document.getElementById("1w").innerHTML+= returnedData["09:00:00"]["weather"] + "<br>";
+      document.getElementById("1w").innerHTML+= returnedData["09:00:00"]["temp"] + "<br>";
+      var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + returnedData["09:00:00"]["icon"] + '.png">';
+      document.getElementById("1w").innerHTML+= iconImage;
+      document.getElementById("1w").innerHTML+= "<br>09:00";
+
+      document.getElementById("2w").innerHTML+= returnedData["12:00:00"]["weather"] + "<br>";
+      document.getElementById("2w").innerHTML+= returnedData["12:00:00"]["temp"] + "<br>";
+      var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + returnedData["12:00:00"]["icon"] + '.png">';
+      document.getElementById("2w").innerHTML+= iconImage;
+      document.getElementById("2w").innerHTML+= "<br>12:00";
+
+      document.getElementById("3w").innerHTML+= returnedData["15:00:00"]["weather"] + "<br>";
+      document.getElementById("3w").innerHTML+= returnedData["15:00:00"]["temp"] + "<br>";
+      var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + returnedData["15:00:00"]["icon"] + '.png">';
+      document.getElementById("3w").innerHTML+= iconImage;
+      document.getElementById("3w").innerHTML+=  "<br>15:00";
+
+
+      document.getElementById("4w").innerHTML+= returnedData["18:00:00"]["weather"] + "<br>";
+      document.getElementById("4w").innerHTML+= returnedData["18:00:00"]["temp"] + "<br>";
+      var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + returnedData["18:00:00"]["icon"] + '.png">';
+      document.getElementById("4w").innerHTML+= iconImage;
+      document.getElementById("4w").innerHTML+=  "<br>18:00";
+    });
+  /*$.get("algo/" + date + time + station_name, function(returnedData) {
     document.getElementById("Test").innerHTML= returnedData;
-  });
+  });*/
+};
+
+
+
+function weatherToday() {
+  $.get("weatherToday", function(returnedData) {
+    /*hard coded for now*/
+    document.getElementById("1w").innerHTML= "";
+    document.getElementById("2w").innerHTML= "";
+    document.getElementById("3w").innerHTML= "";
+    document.getElementById("4w").innerHTML= "";
+
+    for (var i=0; returnedData.length, i++;) {
+      console.log(returnedData[i]);
+    };
+
+});
 };
 </script>
 </body>

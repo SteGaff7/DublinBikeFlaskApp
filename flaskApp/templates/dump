@@ -22,3 +22,6 @@ if (place.geometry.viewport) {
 
 
 infowindow{{item[0]}}.open(map, marker{{item[0]}});
+
+
+var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
