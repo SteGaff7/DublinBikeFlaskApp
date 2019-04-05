@@ -25,3 +25,23 @@ infowindow{{item[0]}}.open(map, marker{{item[0]}});
 
 
 var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+
+
+
+
+
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10){
+       dd='0'+dd;
+   }
+if(mm<10){
+       mm='0'+mm;
+   }
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("dateField").setAttribute("min", today);

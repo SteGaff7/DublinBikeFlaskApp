@@ -54,7 +54,7 @@ def predictive(stuff):
 
 @app.route('/weatherToday')
 def weatherToday():
-    weather_dict ={}
+    weather_array = []
     
     #Current Weather
     with urllib.request.urlopen("http://api.openweathermap.org/data/2.5/weather?id=7778677&APPID=0927fd5dff272fdbd486187e54283310") as url:
@@ -64,13 +64,13 @@ def weatherToday():
         icon = data["weather"][0]["icon"]
         temp = data["main"]["temp"]
         
-        weather_dict["Now"] = {"weather" : weather, "temp" : temp, "icon" : icon}
+        weather_array = [["Now", weather, temp, icon],[],[],[]]
     
     #Next 3 weather forecasts
     with urllib.request.urlopen("http://api.openweathermap.org/data/2.5/forecast?id=7778677&APPID=0927fd5dff272fdbd486187e54283310") as url:
         data = json.loads(url.read().decode())
         
-        for i in range(0, 3, +1):
+        for i in range(1, 4, +1):
             print(data["list"][i]["dt_txt"])
             forecast_date_time = data["list"][i]["dt_txt"]
             forecast_date = forecast_date_time.split()[0]
@@ -82,13 +82,14 @@ def weatherToday():
             temp = data["list"][i]["main"]["temp"]
             print(weather, temp, icon)
             
-            weather_dict[forecast_time] = {"weather" : weather, "temp" : temp, "icon" : icon}
+            weather_array[i] = [forecast_time, weather, temp, icon]
 
         
-    for i in weather_dict:
-        print(i,weather_dict[i])
-                  
-    return jsonify(weather_dict)
+    #for i in weather_dict:
+     #   print(i,weather_dict[i])
+    
+    return jsonify(weather_array)        
+    #return jsonify(weather_dict)
 
 @app.route('/weatherForecast/<date>')
 def weatherForecast(date):
