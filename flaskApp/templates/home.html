@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+
 </head>
 
 <style>
@@ -36,8 +41,7 @@
 </style>
 
 
-
-<body>
+<body onload="weatherToday()">
    <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -60,8 +64,11 @@
 </nav>
 
 
-
 <!-- BUTTONS -->
+
+
+
+<div id="topDiv" style="height:200px;">
 <div class="filter">
 
   <!--SEARCH BUTTON-->
@@ -73,6 +80,9 @@
   </div>
 
   <!--RADIO BUTTONS-->
+
+
+
   <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations<br>
   <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike<br>
   <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Drop off a bike<br>
@@ -83,21 +93,28 @@
 
 <!--PREDICTIVE DATA-->
 
-<div id="Form">
+<div id="Form" style="width:40%; float:right;">
   <form id= "myForm" onsubmit="predictive()">
-    <input type="text" name="station_name" id="station_name" placeholder=" Enter station name..."><br><br>
-      <input type="date" id="date" data-date-inline-picker="true">
+    <input type="text" name="station_name" id="station_name" list="stations" placeholder=" Enter station name..."><br><br>
 
-      <!--<input type="date" id="date" class="form-control">-->
+    <input type="date" id="date" data-date-inline-picker="true" max="" min="">
 
-      <input type="time" id="time" ><br><br>
-      <input type="submit"><br>
+    <input type="time" id="time" step="1800"><br><br>
+    <input type="submit"><br>
+
+    <!-- Populate datalist with JS -->
+    <datalist id="stations">
+    </datalist>
+
   </form>
   </div>
+</div>
 
+
+<div id="bottomDiv">
 <div id="Analytics2" style="height:700px;">
   <div id="title" style="height:15%;"><h1>REAL TIME / DATA</h1></div>
-  <div id="data" style="height:25%; background-color: blue;">
+<div id="data" style="height:25%; background-color: blue;">
     <h2>DATA</h2>
       <span id='name2'></span><br>
       <span id='status2'></span><br>
@@ -114,19 +131,11 @@
 
 
 
-<div id="testDiv">
-  <p id = "Test">
-  </p>
-</div>
-
-
-
-
  <!-- GOOGLE MAP INTERFACE -->
 <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
 
 <div id="map" style="height:700px; width:55%; margin-left:1%; margin-top:1%; margin-bottom:2%;"  >Map goes here</div>
-
+</div>
 
  <!-- FOOTER -->
 <footer class="container-fluid" style="position:static; clear:both;">
@@ -136,11 +145,11 @@
 
 
 <!--SCRIPTS-->
-
 <script>
 
 var map;
 var markers = [];
+
 function initMap() {
   // AutoComplete object
   new google.maps.event.addDomListener(window, 'load', initAutocomplete);
@@ -162,6 +171,19 @@ function initMap() {
     {% for item in Data %}
       statNum = {{item[0]}};
       statName = '{{item[1]}}';
+
+      // Convert station name to Capitialized lower case
+      statName = statName.toLowerCase();
+      split = statName.split(" ");
+      statName = "";
+      split.forEach(function(element) {
+        upper = element.slice(0,1);
+        remainder = element.slice(1);
+        upper = upper.toUpperCase();
+        statName += upper + remainder + " ";
+        });
+      statName = statName.trim();
+
       statStatus = '{{item[2]}}';
       statTotalStands = parseFloat({{item[3]}});
       statAvailBikes = parseFloat({{item[4]}});
@@ -187,6 +209,11 @@ function initMap() {
         statMins = "0" + statMins;
       }
       statSecs = statDate.getSeconds();
+
+
+    /* Create datalist of each  */
+    document.getElementById("stations").innerHTML += "<option>"+statName+"</option><br>";
+
 
     /*Create a marker with the name marker+stationNumber*/
     var marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, icon: {url: '/images/bike.png', scaledSize: new google.maps.Size(25, 25)}, map: map, });
@@ -265,9 +292,11 @@ function initMap() {
             document.getElementById("stands").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
           });
           infowindow.open(map, marker{{item[0]}});
+          displayWeatherToday();
         });
   {% endfor %}
 }
+
 
 </script>
 
@@ -296,6 +325,7 @@ function centerPlace() {
   /* Get the place details from the autocomplete object. */
   var place = autocomplete.getPlace();
   map.setCenter(place.geometry.location);
+  map.setZoom(17);
   }
 
 /* Bias the autocomplete object to the user's geographical location,
@@ -327,6 +357,9 @@ function geolocate() {
 <!--JAVASCRIPT FUNCTIONS-->
 
 <script>
+
+/* Declare global array variable to cache todays weather forecast for real time data*/
+var weatherArrayToday;
 
 /* Set marker bike icon according to bike availability */
 function markerIconBikesAvail(marker) {
@@ -398,6 +431,8 @@ function predictive() {
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
 
+  console.log(station_name, date, time);
+
   $.get("weatherForecast/" + date, function(returnedData) {
     /*hard coded for now*/
       document.getElementById("1w").innerHTML= "";
@@ -439,18 +474,83 @@ function predictive() {
 
 function weatherToday() {
   $.get("weatherToday", function(returnedData) {
-    /*hard coded for now*/
-    document.getElementById("1w").innerHTML= "";
-    document.getElementById("2w").innerHTML= "";
-    document.getElementById("3w").innerHTML= "";
-    document.getElementById("4w").innerHTML= "";
-
-    for (var i=0; returnedData.length, i++;) {
-      console.log(returnedData[i]);
-    };
-
-});
+    weatherArrayToday = returnedData;
+    });
 };
+
+function displayWeatherToday() {
+
+  document.getElementById("1w").innerHTML= "";
+  document.getElementById("2w").innerHTML= "";
+  document.getElementById("3w").innerHTML= "";
+  document.getElementById("4w").innerHTML= "";
+
+  document.getElementById("1w").innerHTML+= weatherArrayToday[0][1] + "<br>";
+  document.getElementById("1w").innerHTML+= weatherArrayToday[0][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[0][3] + '.png">';
+  document.getElementById("1w").innerHTML+= iconImage + "<br>";
+  document.getElementById("1w").innerHTML+= weatherArrayToday[0][0];
+
+  document.getElementById("2w").innerHTML+= weatherArrayToday[1][1] + "<br>";
+  document.getElementById("2w").innerHTML+= weatherArrayToday[1][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[1][3] + '.png">';
+  document.getElementById("2w").innerHTML+= iconImage + "<br>";
+  document.getElementById("2w").innerHTML+= weatherArrayToday[1][0];
+
+  document.getElementById("3w").innerHTML+= weatherArrayToday[2][1] + "<br>";
+  document.getElementById("3w").innerHTML+= weatherArrayToday[2][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[2][3] + '.png">';
+  document.getElementById("3w").innerHTML+= iconImage + "<br>";
+  document.getElementById("3w").innerHTML+= weatherArrayToday[2][0];
+
+  document.getElementById("4w").innerHTML+= weatherArrayToday[3][1] + "<br>";
+  document.getElementById("4w").innerHTML+= weatherArrayToday[3][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[3][3] + '.png">';
+  document.getElementById("4w").innerHTML+= iconImage + "<br>";
+  document.getElementById("4w").innerHTML+= weatherArrayToday[3][0];
+}
+
+
+
+/* Date objects for Calendar */
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if(dd<10){
+       dd='0'+dd;
+   }
+if(mm<10){
+       mm='0'+mm;
+   }
+
+today = yyyy+'-'+mm+'-'+dd;
+
+
+
+var maxDate = new Date();
+maxDate.setDate(maxDate.getDate() + 4);
+
+var maxdd = maxDate.getDate();
+var maxmm = maxDate.getMonth()+1; //January is 0!
+var maxyyyy = maxDate.getFullYear();
+
+if(maxdd<10) {
+  maxdd='0'+maxdd;
+}
+if(maxmm<10){
+       maxmm='0'+maxmm;
+}
+
+maxDate = maxyyyy+'-'+maxmm+'-'+maxdd;
+
+
+document.getElementById("date").setAttribute("min", today);
+document.getElementById("date").setAttribute("max", maxDate);
+
+console.log(today, maxDate);
+
 </script>
 </body>
 </html>
