@@ -3,6 +3,8 @@ from flask import Flask, render_template, jsonify
 import pymysql
 import urllib.request
 import json
+#Not needed below
+import random
 from mysql.connector.errorcode import CR_INSECURE_API_ERR
 
 app = Flask(__name__, static_url_path='')
@@ -50,7 +52,7 @@ def retrieve(stationNumber):
 @app.route('/algo/<stuff>')
 def predictive(stuff):
     #stuff = jsonify(stuff)
-    return stuff
+    return jsonify(stuff)
 
 @app.route('/weatherToday')
 def weatherToday():
@@ -62,7 +64,7 @@ def weatherToday():
         
         weather = data["weather"][0]["main"]
         icon = data["weather"][0]["icon"]
-        temp = data["main"]["temp"]
+        temp = str(round(int(data["main"]["temp"])-273.15)) + "°C"
         
         weather_array = [["Now", weather, temp, icon],[],[],[]]
     
@@ -74,15 +76,16 @@ def weatherToday():
             print(data["list"][i]["dt_txt"])
             forecast_date_time = data["list"][i]["dt_txt"]
             forecast_date = forecast_date_time.split()[0]
-            forecast_time = forecast_date_time.split()[1] 
+            forecast_time = forecast_date_time.split()[1]
+            forecast_time_slice = forecast_time[0:5]
             
             print(forecast_time)
             icon = data["list"][i]["weather"][0]["icon"]
             weather = data["list"][i]["weather"][0]["main"]
-            temp = data["list"][i]["main"]["temp"]
+            temp = str(round(int(data["list"][i]["main"]["temp"])-273.15)) + "°C"
             print(weather, temp, icon)
             
-            weather_array[i] = [forecast_time, weather, temp, icon]
+            weather_array[i] = [forecast_time_slice, weather, temp, icon]
 
         
     #for i in weather_dict:
@@ -109,7 +112,7 @@ def weatherForecast(date):
                     print(forecast_time)
                     icon = data["list"][i]["weather"][0]["icon"]
                     weather = data["list"][i]["weather"][0]["main"]
-                    temp = data["list"][i]["main"]["temp"]
+                    temp = str(round(int(data["list"][i]["main"]["temp"])-273.15)) + "°C"
                     print(weather, temp, icon)
                     
                     weather_dict[forecast_time] = {"weather" : weather, "temp" : temp, "icon" : icon}
@@ -121,6 +124,15 @@ def weatherForecast(date):
 
     return jsonify(weather_dict)
 
+
+@app.route("/chart_data")
+def get_chart_data():
+    random_array = []
+    for x in range(20):
+        y = random.randint(1,41)
+        print(y)
+        random_array += [y]
+    return jsonify(random_array)
 
 @app.route("/about") # Tells the browser where to look
 def How_it_works():
