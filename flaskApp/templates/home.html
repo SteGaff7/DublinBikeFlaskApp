@@ -36,6 +36,7 @@
     #Analytics {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
     .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
     #Analytics2 {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
+    #image {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
     #weather {box-sizing: border-box;}
     <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
 </style>
@@ -118,10 +119,9 @@
 
 <!--DATA DIV-->
 <div id="bottomDiv">
-<div id="Analytics2" style="height:700px;">
-  <div id="title" style="height:15%;"><h1>REAL TIME / DATA</h1></div>
-<div id="data" style="height:25%; background-color: blue;">
-    <h2>DATA</h2>
+<div id="Analytics2" style="height:700px; display:none;">
+  <div style="height:7.5%;"><h1 id="title"></h1></div>
+<div id="data" style="height:20%; background-color: blue;">
       <span id='name2'></span><br>
       <span id='status2'></span><br>
       <span id='banking2'></span><br>
@@ -129,12 +129,16 @@
       <span id='stands2'></span><br>
       <span id='updated2'></span>
   </div>
-  <div id="weather" style="height:25%; background-color:lightgreen;"><h2 id="weatherHeading">WEATHER</h2>
+  <div id="weather" style="height:20%; background-color:lightgreen;"><h2 id="weatherHeading">WEATHER</h2>
     <div id="1w", style="width:25%; height: 90%; background-color:red; display: inline-block;"></div><div id="2w", style="width:25%; height: 90%; background-color:white; display: inline-block; "></div><div id="3w", style="width:25%; height: 90%; background-color:blue; display: inline-block;"></div><div id="4w", style="width:25%; height: 90%; background-color:green; display: inline-block;"></div>
   </div>
   <div id="graph" style="height:30%; background-color:lightgrey;"><h2>GRAPH</h2>
     <canvas id="myChart"></canvas>
   </div>
+</div>
+
+<div id="image" style="height:700px;">
+<img src="{{ url_for('static', filename='images/howitworks.png') }}" style="max-width:100%; max-height:100%;">
 </div>
 
 
@@ -338,6 +342,8 @@ function initMap() {
             console.log(marker{{item[0]}}.metadata['bikes'] + "<br>" + marker{{item[0]}}.metadata['stands'] + "<br>" + marker{{item[0]}}.metadata['hour'] + ":" +  marker{{item[0]}}.metadata['min']);
 
             /* Display data in the box to the side */
+            document.getElementById("title").innerHTML = "REAL TIME DATA";
+
             document.getElementById("name2").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
             document.getElementById("status2").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
             document.getElementById("banking2").innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
@@ -364,7 +370,10 @@ function initMap() {
           });
 
           infowindow.open(map, marker{{item[0]}});
-          /* Get todays weather and displat */
+          /* Get todays weather and display */
+
+
+
           displayWeatherToday();
 
           /* swap this with get historical graph data */
@@ -376,6 +385,16 @@ function initMap() {
           /* Must load response object before making the chart, pass list from above jquery as pararmeter*/
           makeChart(myData);
           });
+
+          if (document.getElementById("image").style.display != "none") {
+            document.getElementById("image").style.display = "none";
+          }
+
+          if (document.getElementById("Analytics2").style.display != "inline") {
+            document.getElementById("Analytics2").style.display = "inline";
+          }
+
+
 
         });
   {% endfor %}
@@ -588,6 +607,16 @@ console.log(today, maxDate);
 function predictive() {
   /*Prevent page reloading each time function is run*/
   event.preventDefault();
+
+  /*Hide image if not already hidden and display analytics box */
+  if (document.getElementById("image").style.display != "none") {
+    document.getElementById("image").style.display = "none";
+  }
+
+  if (document.getElementById("Analytics2").style.display != "inline") {
+    document.getElementById("Analytics2").style.display = "inline";
+  }
+
   var station_name = document.getElementById("station_name").value;
   var date = document.getElementById("date").value;
   var time = document.getElementById("time").value;
@@ -608,7 +637,7 @@ function predictive() {
     chartData = returnedData[1];
     predictedBikes = returnedData[2];
 
-
+    document.getElementById("title").innerHTML = "PREDICTIVE DATA FOR " + date;
     document.getElementById("weatherHeading").innerHTML = "WEATHER FORECAST " + date;
 
     document.getElementById("1w").innerHTML= weatherForecast["09:00:00"]["weather"] + "<br>";

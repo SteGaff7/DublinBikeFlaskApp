@@ -4,6 +4,9 @@ import pymysql
 import urllib.request
 import json
 import datetime
+import pickle
+from sklearn.ensemble import RandomForestRegressor
+
 #Not needed below
 import random
 
@@ -91,6 +94,7 @@ def weatherToday():
 
 @app.route('/predictive_data/<details>')
 def predictive(details):
+    #Date received in form date_time_stationNumber
     details_array = details.split('_')
     date = details_array[0]
     time = details_array[1]
@@ -100,9 +104,6 @@ def predictive(details):
     date_2 = date.replace('-', ' ', 2)
     date_object = datetime.datetime.strptime(date_2, '%Y %m %d')
     weekday = date_object.weekday()
-    #print(date)
-    #print(date_object)
-    #print(weekday)
     
     #Round the time required for the prediction to the closest weather forecast time
     #Address 00:00 at some stage
@@ -119,19 +120,20 @@ def predictive(details):
     else:
         rounded_time = '21:00:00'
         
-    #print(details_array, date, time, rounded_time, station_number)
-    #date variable
-     
+    #Call the weather API
     with urllib.request.urlopen("http://api.openweathermap.org/data/2.5/forecast?id=7778677&APPID=0927fd5dff272fdbd486187e54283310") as url:
         data = json.loads(url.read().decode())
-
+        
+        #Create and array for the weather descriptions for that day (to be used with the predictive graph)
         weather_description_array = []
+        
+        #Create a weather dictionary that will be used to store the weather forecast data
         weather_dict ={}
         for i in range(0, len(data["list"]), +1):
-            #print(date,"GAP", data["list"][i]["dt_txt"])
+            
+            #Get forecast date and time
             forecast_date_time = data["list"][i]["dt_txt"]
             forecast_date = forecast_date_time.split()[0]
-            #print(forecast_date)
             
             #Only using weather forecast data for the day that we are interested in
             if date == forecast_date:              
@@ -141,33 +143,55 @@ def predictive(details):
                 #Gather the weather description for the time slots that will appear on the graph
                 if forecast_time in ['06:00:00','09:00:00','12:00:00','15:00:00','18:00:00','21:00:00']:
                     weather_description = data["list"][i]["weather"][0]["description"]
-                    print(forecast_time, weather_description)
+                    #print(forecast_time, weather_description)
+                    #Append to weather description array
                     weather_description_array.append(weather_description)
                 
                 #Get the weather_description for the exact time specified
                 if forecast_time == rounded_time:
                     specified_weather_description = data["list"][i]["weather"][0]["description"]
-                    print(specified_weather_description)
                     
                 #Get the weather for the slots that will be shown as part of the weather forecast
                 if forecast_time == '09:00:00' or forecast_time == '12:00:00' or forecast_time == '15:00:00' or forecast_time == '18:00:00':
-                    print(forecast_time)
+                    #Store icon, weather and temperature fot that time of the specified day in the weather dictionary 
                     icon = data["list"][i]["weather"][0]["icon"]
                     weather = data["list"][i]["weather"][0]["main"]
                     temp = str(round(int(data["list"][i]["main"]["temp"])-273.15)) + "°C"
-                    print(weather, temp, icon)
+                    #print(weather, temp, icon)
                     
                     weather_dict[forecast_time] = {"weather" : weather, "temp" : temp, "icon" : icon}
         
-        print(weather_description_array)
+        #Function to change a weather description to the code needed for the predictive model
+        def change_weather_description(weather_description):
+            weather_description_to_code_dict ={
+                "clear sky" : 1,
+                "few clouds" : 2,
+                "scattered clouds" : 3,
+                "broken clouds" : 4,
+                "fog" : 5,
+                "mist" : 6,
+                "light intensity drizzle" : 7,
+                "light intensity drizzle rain" : 8,
+                "light intensity shower rain" : 9,
+                "shower rain" : 10,
+                "heavy intensity rain" : 11,
+                "light rain" : 12,
+                "moderate rain" : 13,
+                "very heavy rain" : 14,
+                "shower sleet" : 15,
+                "snow" : 16
+                }
+            coded_weather_description = weather_description_to_code_dict[weather_description]
+            return coded_weather_description
         
         #List of weather descriptions to use for the predictive data for the graph
         weather_description_for_graph = [None]*20
         
-        #06:00
+        #Allocate the closest weather description to a time slot, e.g, 05:00 match to 06:00 weather forecast description
+        #06:00 e.g 05:00, 06:00, 07:00
         for i in range(3):
             weather_description_for_graph[i] = weather_description_array[0]
-        #09:00
+        #09:00 e.g 08:00, 09:00, 10:00
         for i in range(3,6,+1):
             weather_description_for_graph[i] = weather_description_array[1]
         #12:00
@@ -183,45 +207,50 @@ def predictive(details):
         for i in range(15,20,+1):
             weather_description_for_graph[i] = weather_description_array[5]
         
-        print(weather_description_for_graph)
-            
-        for i in weather_dict:
-            print(i,weather_dict[i])
+        #print(weather_description_array)
+         
+        #print(weather_description_for_graph)
+
+    #Get rid of the colon in the time variable
+    time = time.replace(":", "")
     
-    #store weather for specified date and time
+    #Call function to change to code
+    specified_weather_description = change_weather_description(specified_weather_description)
     
-    #call predicitve data algorithm 
-    
-    #add all this info to an array to return
-    
+    #Array of times that will display on the predictive graph
     time_array = ['0500','0600','0700','0800','0900','1000','1100','1200','1300','1400','1500','1600','1700','1800','1900','2000','2100','2200','2300','0000']
     
-    
+    #Empty list that will hold the predictive data of the amount of bikes for the corresponding time slot above
     graph_data_array = [0]*20
     
-    print(str(station_number)+"_"+str(weekday)+".sav")
-    #model = pickle.load(open(model/pickle/str(station_number)+"_"+str(weekday)+".sav"))
+    #print(str(station_number)+"_"+str(weekday)+".sav")
+    file = open("/home/stephen/Documents/College/Semester2/Eclipse_Workspace/SEProject/SEProject/model/pickles/"+str(station_number)+"_"+str(weekday)+".sav", "rb")
+    model = pickle.load(file)
     
     
-    #algo, for weather_description in weather_description_for_graph, run algo with weather, station number, the times from 0500 to 0000 and the date specified
-    for i in range(0, len(weather_description_for_graph), +1):
-        #dummy_algo(station_number, date, time_array[i], weather_description_for_graph[i])
-        print("stat num", station_number, "weekday", weekday, "time", time_array[i], "weather description", weather_description_for_graph[i])
-        y = random.randint(1,30)
-        graph_data_array[i] = y
+    #Call the model 20 times for times from 0500 to 2400 with the relevant weather description
+    for i in range(0, len(weather_description_for_graph), +1):   
+        #Convert weather description to code     
+        w_description = change_weather_description(weather_description_for_graph[i])
+        #Predict the bike availability for this index of the time_array and weather_description_graph
+        bike_prediction = int(model.predict([[str(time_array[i]), str(w_description)]]))
+        #Change the value of the graph_data_array by index e.g index 0 =0500, index 1 =0600.. etc
+        graph_data_array[i] = bike_prediction
     
-    #model(specified_weather_description, time)
-    #algo for specified time, send in station number, time, date and weather description for specified time
-    #dummy_algo(station_number, date, time, specified_weather_description)
-    print("SPECIFIC")
-    print("stat num",station_number, "weekday", weekday, "time", time.replace(":", ""), "weather description", specified_weather_description)
-    specified_bikes_value = 10
+    print("Calling predictive model with following:", str(station_number)+"_"+str(weekday)+".sav, time:", time, "weather description", specified_weather_description)
+    #Call the model for the specified time slot
+    specified_bikes_value = model.predict([[str(time), str(specified_weather_description)]])
     
+    print()
     print(graph_data_array)
+    print()
     print(weather_dict)
     print(specified_bikes_value)
-
+    
+    #Convert class 'numpy.ndarray' to int
+    specified_bikes_value = int(specified_bikes_value)    
     returning_data = [weather_dict, graph_data_array, specified_bikes_value]
+    
     print(returning_data)
     return jsonify(returning_data)
     
