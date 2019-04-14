@@ -1,5 +1,0 @@
- !#bin/bash
-
-./both_DFS.py
-./clean_dataset.py
-./models.py

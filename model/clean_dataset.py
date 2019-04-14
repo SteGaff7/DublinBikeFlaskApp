@@ -1,6 +1,6 @@
 import pandas as pd
 
-def clean_data():    
+def clean_data():
     df = pd.read_csv('full_dataframe.csv', index_col=0)
 
     for col in df[['description']].columns:
@@ -36,14 +36,17 @@ def clean_data():
             df['description'].replace('shower sleet',15, inplace=True)
         if [df['description']=='snow']:
             df['description'].replace('snow',16, inplace=True)
+        if [df['description']=='overcast clouds']:
+            df['description'].replace('overcast clouds',17, inplace=True)
+
 
     df['last_update'] = df['last_update'].astype('datetime64[ns]')
     df['week'] = df['last_update'].dt.week
     df['day'] = df['last_update'].dt.weekday
-    df['last_update'] = df['last_update'].dt.round('30min') 
+    df['last_update'] = df['last_update'].dt.round('30min')
     df['time'] =df.last_update.map(lambda t: t.strftime('%H%M'))
     df = df.drop_duplicates()
-    df = df.drop(['last_update', 'number', 'banking', 'bike_stands', 'weather_id', 'main', 'temperature', 'humidity', 'wind_speed'] , axis=1)
+    df = df.drop(['last_update', 'banking', 'bike_stands', 'weather_id', 'main', 'temperature', 'humidity', 'wind_speed'] , axis=1)
 
     df.to_csv('dataframe.csv')
 
