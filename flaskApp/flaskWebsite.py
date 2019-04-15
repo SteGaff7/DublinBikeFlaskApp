@@ -75,7 +75,7 @@ def weatherToday():
         data = json.loads(url.read().decode())
         
         for i in range(1, 4, +1):
-            print(data["list"][i]["dt_txt"])
+            #print(data["list"][i]["dt_txt"])
             forecast_date_time = data["list"][i]["dt_txt"]
             forecast_date = forecast_date_time.split()[0]
             forecast_time = forecast_date_time.split()[1]
