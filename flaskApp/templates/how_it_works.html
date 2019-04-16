@@ -5,24 +5,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/static/css/template.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  
+
 </head>
-    
+
 <style>
-    
+
     #howitworks {margin-left: 7%; margin-top: 3%;}
-    
+
     .text {border-color: #234a55; border: solid; float: right; width: 45%; padding: 2%; line-height: 200%; margin-right: 3%; margin-top: 3%;}
-    
+
 </style>
-    
+
 
 <body>
 
-<h1><img src="/static/images/dublinbikeslogo.png" width="20%" height="60px" id="dublinbikeslogo"> <img src="/static/images/dublincitycouncil.png" width="20%" height="60px" id="dublincitycouncil"> </h1> 
+<h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
 
 
 
@@ -32,33 +32,33 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="home.html">Stations</a></li>
-        <li  class="active"><a href="how_it_works.html">How it Works</a></li>
-        <li><a href="subscription.html">Subscriptions</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="{{ url_for('home') }}">Stations</a></li>
+        <li class="active"><a href="#">How it Works</a></li>
+        <li><a href="{{ url_for('subscription') }}">Subscriptions</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
-    
-    
+
+
 <div class="howitworksphoto">
-<img src="/static/images/howitworks.png" width="40%" height="65%" id="howitworks">
+<img src="{{ url_for('static', filename='images/howitworks.png') }}" width="40%" height="65%" id="howitworks">
     <div class="text">
         <p><b><u>1. Selection and Payment:</u></b><br>Log in at the terminal using your Just Eat dublinbikes Annual Card, associated Leap Card or your 3 Day Ticket.Enter your PIN and select an available bike on screen.</p>
-        <p><b><u>2. Removal of bike from stand:</u></b><br>Once you have logged into your account successfully, you will  have 60 seconds to press the unlocking button on the stand of the bike you have chosen. Once you have pressed the button you have 5 seconds to remove the bike from the stand.</p> 
+        <p><b><u>2. Removal of bike from stand:</u></b><br>Once you have logged into your account successfully, you will  have 60 seconds to press the unlocking button on the stand of the bike you have chosen. Once you have pressed the button you have 5 seconds to remove the bike from the stand.</p>
         <p><b><u>3. Enjoy the use of dublinbikes:</u></b><br> Use dublinbikes to commute easily around Dublin City Centre.</p>
         <p><b><u>4. Drop off a dublinbike:</u></b><br> When you have completed your journey simply locate the nearest station with available stands. An audio signal of 2 beeps and a green indicator light on the stand confirm that the bike is locked correctly and your usage is complete. If there are no available stands at the station, use the terminal to locate a nearby station with availability and dublinbikes will give you 15 minutes free of charge to get there.</p>
     </div>
 </div>
-    
 
-    
+
+
 <footer class="container-fluid">
     <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
 </footer>

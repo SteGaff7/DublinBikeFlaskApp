@@ -25,17 +25,19 @@ while True:
             available_bikes = data[i]['available_bikes']
             last_update = data[i]['last_update']
             banking = data[i]['banking']
+            address = data[i]['address']
+            lat = data[i]['position']['lat']
+            lng = data[i]['position']['lng']
 
 
             cursor = connection.cursor()
 
-            sql_insert_query = "INSERT IGNORE INTO `dynamicData` (`number`, `name`, `status`, `bike_stands`, `available_bikes`, `available_stands`, `last_update`, `banking`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
+            sql_insert_query = "REPLACE INTO `currentData` (`number`, `name`, `status`, `bike_stands`, `available_bikes`, `available_stands`, `last_update`, `banking`, `latitude`, `longitude`, `address`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
-            insert_tuple = (number, name, status, bike_stands, available_bikes, available_bike_stands, last_update, banking)
+            insert_tuple = (number, name, status, bike_stands, available_bikes, available_bike_stands, last_update, banking, lat, lng, address)
 
             result = cursor.execute(sql_insert_query, insert_tuple)
             connection.commit()
-
 
     except mysql.connector.Error as error :
         connection.rollback()
@@ -49,7 +51,6 @@ while True:
         #f.write(error)
         #f.close()
 
-    
     finally:
         #closing database connection.
         if(connection.is_connected()):
