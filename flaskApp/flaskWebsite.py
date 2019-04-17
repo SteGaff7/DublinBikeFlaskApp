@@ -23,7 +23,7 @@ def connect_to_database():
 #Establish connection and assign to connection
 connection = connect_to_database()
 
-@app.route("/home")
+@app.route("/")
 def home():
     '''
     Home page will automatically query the most recent data from the SQL Db and load this into the home.html template
@@ -94,7 +94,7 @@ def get_chart_data(station_number):
     '''
     Get chart data for a specified station and day, stored in a csv file generated from a python script which uses pandas
     '''
-    csv = "/home/stephen/Documents/College/Semester2/Eclipse_Workspace/SEProject/SEProject/model/graph_csvs/"+str(station_number)+".csv"
+    csv = "model/graph_csvs/"+str(station_number)+".csv"
     df = pd.read_csv(csv, index_col=0)
     
     #Get the current day as an int
@@ -240,8 +240,9 @@ def predictive(details):
     
     #Empty list that will hold the predictive data of the amount of bikes for the corresponding time slot above
     graph_data_array = [0]*20
-
-    file = open("/home/stephen/Documents/College/Semester2/Eclipse_Workspace/SEProject/SEProject/model/pickles/"+str(station_number)+"_"+str(weekday)+".sav", "rb")
+    
+    file = open("model/pickles/"+str(station_number)+"_"+str(weekday)+".sav", "rb")
+    #file = open("/home/stephen/Documents/College/Semester2/Eclipse_Workspace/SEProject/SEProject/flaskApp/model/pickles/"+str(station_number)+"_"+str(weekday)+".sav", "rb")
     model = pickle.load(file)
     
     #Call the model 20 times for times from 0500 to 2400 with the relevant weather description
