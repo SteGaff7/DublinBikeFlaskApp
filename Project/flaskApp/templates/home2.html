@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+</head>
+
+<style>
+    table, th, td {
+      border: 1px solid black;
+    }
+      .filter {padding-top: 0%; font-size: 10pt; padding-bottom: 0%; margin-bottom: 10px; margin-right: 0%; float: left;}
+    #address {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 1%; width: 600px; margin-left: 10%; }
+    #autocomplete {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 1.5%; margin-top: 3%; margin-left: 6%; width: 300%; padding-left: 3%; margin-bottom: 4%;}
+    #station_name {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 89%; margin-left: 7%; margin-top: 1%; margin-bottom: 0%; }
+    #date {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 45%; margin-left: 7%; margin-top: 1%;}
+    #time {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 250px;}
+    #gobutton { border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 40%;margin-left: 5%; margin-bottom: 0px;}
+    #gobutton:hover {color: white; background-color: #234a55; }
+    .form-control {border: solid; border-color: #234a55; font-size: 11pt; font-style: italic; padding: 0.5%; width: 20%; margin-left: 3%;}
+    label {margin-left: 3%; padding-bottom: 0px; padding-top: 0px;}
+    #googlemap {width: 50%; height: 325px; margin-top: 1%; margin-left: 3%;}
+    #radiobutton1 {margin-left: 10%; margin-right: 1%; padding-top: 2%;}
+    #radiobutton2 {margin-left: 10%; margin-right: 1%;}
+    #radiobutton3 {margin-left: 10%; margin-right: 1%;}
+    #Analytics {margin-right: 2%; margin-top: 1%; height: 600px; width: 35%; float:right; outline-style: solid; outline-color: black;}
+    .text {border-color: #234a55; border: solid; float: right; width: 30%; padding: 2%; line-height: 100%; margin-right: 3%; padding-bottom: 50%;}
+    #Analytics2 {margin-right: 2%; margin-top: 0%; height: 495px; width: 35%; float:right; outline-style: solid; outline-color: black;}
+    #image {margin-right: 2%; margin-bottom: 1%; width: 35%; float:right; outline-style: solid; outline-color: black;}
+    #weather {box-sizing: border-box;}
+    #submit {margin-left: 7%; margin-bottom: 0%; margin-top: 1%;}
+    #topDiv {padding-bottom: 0%;}
+    #data {font-size: 8pt;}
+    #title { font-size: 10pt; background-color: #234a55; color: white; height: 29%; text-align: center; padding-top: 2px;padding-bottom: 50px;}
+    #weatherHeading { font-size: 10pt; background-color: #234a55; color: white; text-align: center; height: 19%; padding-top: 3px; padding-bottom: 3%;}
+    #graphHeading { font-size: 10pt; background-color: #234a55; color: white; text-align: center; height: 20%; padding-top: 3px; padding-bottom: 3%; margin-top: 17%; margin-bottom: 0%;}
+    #graph {margin-top: 0%; height: 1%;}
+    #1w {margin-left: 5%;}
+    <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
+</style>
+
+<!--BODY-->
+<!--Load todays weather forecast on page load-->
+<body onload="weatherToday()">
+
+   <h1><img src="{{ url_for('static', filename='images/dublinbikeslogo.png') }}" width="20%" height="60px" id="dublinbikeslogo"> <img src="{{ url_for('static', filename='images/dublincitycouncil.png') }}" width="20%" height="60px" id="dublincitycouncil"></h1>
+
+<!-- NAV BAR -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>conflicts
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Stations</a></li>
+        <li><a href="{{ url_for('how_it_works') }}">How it Works</a></li>
+        <li><a href="{{ url_for('subscription') }}">Subscriptions</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- SEARCH BUTTON -->
+<div id="topDiv" style="height:120px;">
+
+<div class="filter" style="margin-bottom: 0%;">
+
+  <div id="locationField">
+    <input id="autocomplete"
+           placeholder="Enter your address"
+           onFocus="geolocate()"
+           type="text"/>
+  </div>
+
+
+
+  <!--RADIO BUTTONS-->
+  <input type="radio" name="station" id="radiobutton1" onclick="showAll()"> Display all stations<br>
+  <input type="radio" name="station" id="radiobutton2" onclick="collectBike()">  Collect a bike<br>
+  <input type="radio" name ="station" id="radiobutton3" onclick="returnBike()"> Park a bike<br>
+</div>
+
+
+<!--PREDICTIVE DATA-->
+
+<!--FORM-->
+<div id="Form" style="width:40%; float:right;">
+  <form id= "myForm" onsubmit="predictive()">
+    <input type="text" name="station_name" id="station_name" list="stations" placeholder=" Enter station name..."><br>
+
+    <input type="date" id="date" data-date-inline-picker="true" max="" min="">
+
+    <input type="time" id="time" step="1800"><br>
+    <input type="submit" id="submit"><br>
+
+    <!-- Populate datalist with JS -->
+    <datalist id="stations"></datalist>
+
+  </form>
+</div>
+</div>
+
+<!--DATA DIV-->
+<div id="bottomDiv">
+<div id="Analytics2" style=" display:none;">
+  <div style="height:4%;"><h1 id="title"></h1></div>
+<div id="data" style="height:15%; background-color: white;">
+      <span id='name2'></span><br>
+      <span id='status2'></span><br>
+      <span id='banking2'></span><br>
+      <span id='bikes2'></span><br>
+      <span id='stands2'></span><br>
+      <span id='updated2'></span>
+  </div>
+  <div id="weather" style="height:8%; background-color:white; padding-top: 0%; font-size: 8pt;"><h2 id="weatherHeading">WEATHER</h2>
+    <div id="1w", style="width:24%; height: 90%; background-color:white; display: inline-block; margin-left: 5%;"></div>
+    <div id="2w", style="width:24%; height: 90%; background-color:white; display: inline-block;"></div>
+    <div id="3w", style="width:25%; height: 90%; background-color:white; display: inline-block;"></div>
+    <div id="4w", style="width:20%; height: 90%; background-color:white; display: inline-block;"></div>
+  </div>
+  <div id="graph">
+    <h2 id="graphHeading">GRAPH</h2>
+    <canvas id="myChart" style="color:#234a55; height: 100px; margin-bottom: 15%;"></canvas>
+  </div>
+</div>
+
+<div id="image" style="height:490px;">
+<img src="{{ url_for('static', filename='images/howitworks.png') }}" style="max-width:100%; max-height:100%; margin-left: 1%; margin-top: 3%;">
+</div>
+
+
+
+ <!-- GOOGLE MAP INTERFACE -->
+<span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
+
+<div id="map" style="height:495px; width:60%; margin-left:1%; margin-top:0%; margin-bottom:1%;">Map goes here</div>
+</div>
+
+ <!-- FOOTER -->
+<footer class="container-fluid" style="position:static; clear:both; height: 55px;">
+    <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
+</footer>
+
+
+
+<!--SCRIPTS-->
+
+<!--MAP, MARKERS & ONCLICK SCRIPTS-->
+<script>
+
+/* Global variable map and a list of all the markers created */
+var map;
+var markers = [];
+
+function initMap() {
+  // AutoComplete object
+  new google.maps.event.addDomListener(window, 'load', initAutocomplete);
+
+  // The map
+  map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 14, center: {lat:  53.347082, lng: -6.264192}});
+
+  // An info window shared by all markers
+  var infowindow = new google.maps.InfoWindow({
+      content: "<div id='popUp'>" +
+      "<span id='name'></span><br>"+
+      "<span id='status'></span><br>"+
+      "<span id='bikes'></span><br>"+
+      "<span id='stands'></span><br>"+
+      "</div>"
+    });
+
+    /* Jinja2 template use; for each row in the CurrentData sql table*/
+    {% for item in Data %}
+
+      /* Assign variables to each index of item*/
+      statNum = {{item[0]}};
+      statName = '{{item[1]}}';
+
+      /*Convert station name to Capitialized lower case*/
+      statName = statName.toLowerCase();
+      split = statName.split(" ");
+      statName = "";
+      split.forEach(function(element) {
+        upper = element.slice(0,1);
+        remainder = element.slice(1);
+        upper = upper.toUpperCase();
+        statName += upper + remainder + " ";
+        });
+      statName = statName.trim();
+
+      statStatus = '{{item[2]}}';
+      statTotalStands = parseFloat({{item[3]}});
+      statAvailBikes = parseFloat({{item[4]}});
+      statAvailStands = parseFloat({{item[5]}});
+      statTime = {{item[6]}};
+      statBank = '{{item[7]}}';
+      if (statBank == 0) {
+        statBank = "No";
+      }
+      else {
+        statBank = "Yes";
+      }
+      statLat = '{{item[8]}}';
+      statLng = '{{item[9]}}';
+      statAddress = '{{item[10]}}';
+      statDate = new Date(statTime);
+      statHours = statDate.getHours();
+      if (statHours < 10) {
+        statHours = "0" + statHours;
+      }
+      statMins = statDate.getMinutes();
+      if (statMins < 10) {
+        statMins = "0" + statMins;
+      }
+      statSecs = statDate.getSeconds();
+
+    /* Create datalist item of each for the predictive data list*/
+    document.getElementById("stations").innerHTML += "<option>"+statName+"</option><br>";
+
+
+    /*Create a marker for each station with the name marker+stationNumber*/
+    window.marker{{item[0]}} = new google.maps.Marker({position: {lat:  parseFloat(statLat), lng: parseFloat(statLng)}, icon: {url: '/images/bike.png', scaledSize: new google.maps.Size(25, 25)}, map: map, });
+
+    /*Create metadata for each marker from the variables above*/
+    marker{{item[0]}}.metadata = {type: "point", id: statNum, name: statName, bikes: statAvailBikes,
+      stands: statAvailStands, banking: statBank, totalStands: statTotalStands, status: statStatus,
+      address: statAddress, last_checked: statTime, time: statDate, hour: statHours, min: statMins, sec: statSecs, icon: {} };
+
+
+    /* Function to assign appropriate bike icon */
+    markerIconBikesAvail(marker{{item[0]}});
+
+    /*Add each marker to a list of markers for easier access*/
+    markers.push(marker{{item[0]}});
+
+    /*Add an onclick function unique to each marker*/
+    marker{{item[0]}}.addListener('click', function() {
+          map.setZoom(16);
+          map.setCenter(marker{{item[0]}}.getPosition());
+
+          /*Change the station name value in the predictive data to the selected marker*/
+          changeStationNameField(marker{{item[0]}}.metadata['name']);
+
+          /*Use JQuery to retrieve the most recent data from our database*/
+          $.get("retrieve/"+marker{{item[0]}}.metadata.id, function(jsonData) {
+            marker{{item[0]}}.metadata['bikes'] = jsonData[0][0];
+            marker{{item[0]}}.metadata['stands'] = jsonData[0][1];
+            marker{{item[0]}}.metadata['last_checked'] = jsonData[0][2];
+
+            /*Create a last updated feature in the format HH:MM from the unix timestamp attribute 'last-checked'*/
+            statDate = new Date(jsonData[0][2]);
+            statHours = statDate.getHours();
+            if (statHours < 10) {
+              statHours = "0" + statHours;
+            }
+            marker{{item[0]}}.metadata['hour'] = statHours;
+
+            statMins = statDate.getMinutes();
+            if (statMins < 10) {
+              statMins = "0" + statMins;
+            }
+            marker{{item[0]}}.metadata['min'] = statMins;
+
+
+            /* Display data in the real-time/predictive div to the side */
+            document.getElementById("title").innerHTML = "REAL TIME DATA";
+
+            document.getElementById("name2").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
+            document.getElementById("status2").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
+            document.getElementById("banking2").innerHTML = "Banking: " + marker{{item[0]}}.metadata['banking'];
+            document.getElementById("bikes2").innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("stands2").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("updated2").innerHTML = "Updated: " + marker{{item[0]}}.metadata['hour'] + ":" + marker{{item[0]}}.metadata['min'];
+
+            /* Update the shared info window to dispaly data for this station */
+            document.getElementById("name").innerHTML = "Name: " + marker{{item[0]}}.metadata['name'];
+            document.getElementById("status").innerHTML = "Status: " + marker{{item[0]}}.metadata['status'];
+            document.getElementById("bikes").innerHTML ="Bikes: " + marker{{item[0]}}.metadata['bikes'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+            document.getElementById("stands").innerHTML = "Stands: " + marker{{item[0]}}.metadata['stands'] +"/"+marker{{item[0]}}.metadata['totalStands'];
+          });
+
+          /*Open info the window for this marker*/
+          infowindow.open(map, marker{{item[0]}});
+
+          /* Get todays weather and display */
+          displayWeatherToday();
+
+          /*Retrieve historical bike availability for this station on the given day*/
+          $.getJSON("chart_data/"+marker{{item[0]}}.metadata.id, function(jsonData) {
+            chartData = jsonData;
+
+          total_stands = marker{{item[0]}}.metadata['totalStands'];
+
+          /*Create a chart from this historical data to represent bike availablilty*/
+          /* Must load response object before making the chart, pass list and total stands from above jquery as pararmeter*/
+          makeChart(chartData, total_stands);
+          });
+          document.getElementById("graphHeading").innerHTML = "USUAL BIKE AVAILABILITY FOR TODAY";
+
+          /*Hide image with instructions once a marker is selected*/
+          if (document.getElementById("image").style.display != "none") {
+            document.getElementById("image").style.display = "none";
+          }
+
+          /*Display information div once clicked*/
+          if (document.getElementById("Analytics2").style.display != "inline") {
+            document.getElementById("Analytics2").style.display = "inline";
+          }
+        });
+  {% endfor %}
+}
+</script>
+
+<!--CHART SCRIPTS-->
+<script>
+
+/*Global variable to store data to pass into chart*/
+var myData;
+myData = [];
+
+function makeChart(myData, total_stands) {
+/* Delete canvas by id to prevent barcharts from stacking on top of each other */
+var element = document.getElementById("myChart");
+element.parentNode.removeChild(element);
+
+/* Create a new canvas to put new barchart on */
+document.getElementById("graph").innerHTML +=   '<canvas id="myChart"></canvas>';
+
+var ctx = document.getElementById('myChart').getContext('2d');
+
+var myBarChart = new Chart(ctx, {
+    // The type of chart
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00',
+        '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00'],
+        datasets: [{
+            label: 'Bikes Available',
+            data: myData,
+            backgroundColor: '#234a55',
+            borderColor: 'rgb(51, 0, 0)'
+    }]
+},
+
+// Configuration options go here
+options: {
+  scales: {
+        xAxes: [{
+            categoryPercentage: 0.7,
+            barPercentage: 1.0
+            }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true,
+            max: total_stands
+            }
+          }]
+          }
+        },
+});
+}
+</script>
+
+
+<!--SEARCH BAR SCRIPTS-->
+<script>
+
+/* Autocomplete object */
+var autocomplete;
+
+function initAutocomplete() {
+  /*Create the autocomplete object, restricting the search predictions to geographical location types. */
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+
+  /* Avoid paying for data that you don't need by restricting the set of
+   place fields that are returned to just the address components.
+   Also included the geometry */
+  autocomplete.setFields(['address_components', 'geometry']);
+
+  /* When the user selects an address from the drop-down, populate the address fields in the form. */
+  autocomplete.addListener('place_changed', centerPlace);
+}
+
+function centerPlace() {
+  /* Get the place details from the autocomplete object. */
+  var place = autocomplete.getPlace();
+  map.setCenter(place.geometry.location);
+  map.setZoom(17);
+  }
+
+/* Bias the autocomplete object to the user's geographical location, as supplied by the browser's 'navigator.geolocation' object. */
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var circle = new google.maps.Circle(
+          {center: geolocation, radius: position.coords.accuracy});
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+</script>
+
+
+<!-- ASYNC DEFER FOR GOOGLE MAP-->
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQaoCAjS9IUKIW0iRV72fRFn1DQy_7ndA&libraries=places&callback=initMap">
+</script>
+
+
+<!--JAVASCRIPT FUNCTIONS-->
+<!--MARKER ICONS AND FILTER SCRIPTS-->
+<script>
+
+/* Use markers list to iterate through markers for display*/
+/* Set marker bike icon according to bike availability */
+function markerIconBikesAvail(marker) {
+  if (marker.metadata['bikes']/marker.metadata['totalStands'] >= 0.6) {
+    var icon = {url:'images/bike_available.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['bikes']/marker.metadata['totalStands'] >= 0.15) {
+    var icon = {url:'images/bike_moderate.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['bikes']/marker.metadata['totalStands'] < 0.15) {
+    var icon = {url:'images/bike_full.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+}
+/* Set stand icon according to stand availability */
+function markerIconStandsAvail(marker) {
+  if (marker.metadata['stands']/marker.metadata['totalStands'] >= 0.6) {
+    var icon = {url:'images/park_available.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+  else if (marker.metadata['stands']/marker.metadata['totalStands'] >= 0.15) {
+    var icon = {url:'images/park_moderate.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+
+  else if (marker.metadata['stands']/marker.metadata['totalStands'] < 0.15) {
+    var icon = {url:'images/park_full.png', scaledSize: new google.maps.Size(20, 25)};
+    marker.setIcon(icon);
+  }
+}
+
+/*Clear all markers from the map */
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap();
+  }
+}
+/*Show all markers on the map*/
+function showAll() {
+  for (var i = 0; i < markers.length; i++) {
+    markerIconBikesAvail(markers[i]);
+    markers[i].setMap(map);
+  }
+}
+/*Show only stations with bikes*/
+function collectBike() {
+  clearMarkers();
+  for (var i = 0; i < markers.length; i++) {
+    if (markers[i].metadata['bikes'] != 0) {
+      markerIconBikesAvail(markers[i]);
+      markers[i].setMap(map);
+    }
+  }
+}
+/*Show only stations with stands available*/
+function returnBike() {
+  clearMarkers();
+  for (var i = 0; i < markers.length; i++) {
+    if (markers[i].metadata['stands'] != 0) {
+      markerIconStandsAvail(markers[i]);
+      markers[i].setMap(map);
+    }
+  }
+}
+
+</script>
+
+
+<!--TODAYS WEATHER SCRIPTS-->
+<script>
+/* Declare global array variable to cache todays weather forecast for real time data, function called on page load to prevent calling API onclick each time*/
+var weatherArrayToday;
+
+/*Use JQuery to retrieve a list with the weather today for today*/
+function weatherToday() {
+  $.get("weatherToday", function(returnedData) {
+    /* Assign to global variable weatherArrayToday*/
+    weatherArrayToday = returnedData;
+    });
+};
+
+/* Display the weather for today*/
+function displayWeatherToday() {
+
+  document.getElementById("weatherHeading").innerHTML = "TODAY'S WEATHER";
+  /* Use the weather icons provided by open weather API */
+
+  document.getElementById("1w").innerHTML= weatherArrayToday[0][1] + "<br>";
+  document.getElementById("1w").innerHTML+= weatherArrayToday[0][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[0][3] + '.png">';
+  document.getElementById("1w").innerHTML+= iconImage + "<br>";
+  document.getElementById("1w").innerHTML+= weatherArrayToday[0][0];
+
+  document.getElementById("2w").innerHTML= weatherArrayToday[1][1] + "<br>";
+  document.getElementById("2w").innerHTML+= weatherArrayToday[1][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[1][3] + '.png">';
+  document.getElementById("2w").innerHTML+= iconImage + "<br style='height:1px;'>";
+  document.getElementById("2w").innerHTML+= weatherArrayToday[1][0];
+
+  document.getElementById("3w").innerHTML= weatherArrayToday[2][1] + "<br>";
+  document.getElementById("3w").innerHTML+= weatherArrayToday[2][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[2][3] + '.png">';
+  document.getElementById("3w").innerHTML+= iconImage + "<br>";
+  document.getElementById("3w").innerHTML+= weatherArrayToday[2][0];
+
+  document.getElementById("4w").innerHTML= weatherArrayToday[3][1] + "<br>";
+  document.getElementById("4w").innerHTML+= weatherArrayToday[3][2] + "<br>";
+  var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherArrayToday[3][3] + '.png">';
+  document.getElementById("4w").innerHTML+= iconImage + "<br>";
+  document.getElementById("4w").innerHTML+= weatherArrayToday[3][0];
+}
+</script>
+
+
+<!--DATE SCRIPTS FOR CALENDAR-->
+<script>
+/* Date objects for Calendar */
+var today = new Date();
+var dd = today.getDate() + 1;
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+
+if (dd<10){
+       dd='0'+dd;
+   }
+if (mm<10){
+       mm='0'+mm;
+   }
+
+/* Convert to format for calendar data-date-inline-picker*/
+today = yyyy+'-'+mm+'-'+dd;
+
+
+/*Set max date for Calendar to 4 days time as this is as far as the free weather API goes to*/
+var maxDate = new Date();
+maxDate.setDate(maxDate.getDate() + 4);
+
+var maxdd = maxDate.getDate();
+var maxmm = maxDate.getMonth()+1; //January is 0!
+var maxyyyy = maxDate.getFullYear();
+
+if(maxdd<10) {
+  maxdd='0'+maxdd;
+}
+if(maxmm<10){
+       maxmm='0'+maxmm;
+}
+
+/* Convert to format for calendar data-date-inline-picker*/
+maxDate = maxyyyy+'-'+maxmm+'-'+maxdd;
+
+/* Set min and max of data inline picker to todays date and today+4*/
+document.getElementById("date").setAttribute("min", today);
+document.getElementById("date").setAttribute("max", maxDate);
+</script>
+
+
+<!--PREDICTIVE DATA SCRIPTS-->
+<script>
+function predictive() {
+  /*Prevent page reloading each time function is run*/
+  event.preventDefault();
+
+  /*Hide image if not already hidden and display analytics box */
+  if (document.getElementById("image").style.display != "none") {
+    document.getElementById("image").style.display = "none";
+  }
+
+  if (document.getElementById("Analytics2").style.display != "inline") {
+    document.getElementById("Analytics2").style.display = "inline";
+  }
+
+  /* Get values from the predictive data form and assign to variables */
+  var station_name = document.getElementById("station_name").value;
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+  var hour = parseInt(time.slice(0,2));
+  var station_number;
+
+  /* Replace "'"s with the utf-8 code so we can compare strings below to find station number. */
+  var new_station_name = station_name.replace(/'/g, "&#39;");
+
+  /* Find the corresponding station number for this station from the array of stations by searching the metadata */
+  markers.forEach(function(element) {
+    if (element.metadata['name'] == new_station_name) {
+      station_number = element.metadata['id'];
+    }
+  });
+
+  /* Use JQuery to retrieve weather forecast, predicitve graph data and predictive data for time specified*/
+  $.get("predictive_data/"+date+"_"+time+"_"+station_number, function(returnedData) {
+    weatherForecast = returnedData[0];
+    chartData = returnedData[1];
+    predictedBikes = returnedData[2];
+
+    marker = "marker" + station_number;
+    /* Get the total stands for the marker specified */
+    total_stands = window[marker].metadata['totalStands'];
+
+    document.getElementById("title").innerHTML = "PREDICTIVE DATA FOR " + date;
+    document.getElementById("weatherHeading").innerHTML = "WEATHER FORECAST FOR " + date;
+
+    document.getElementById("1w").innerHTML= weatherForecast["09:00:00"]["weather"] + "<br>";
+    document.getElementById("1w").innerHTML+= weatherForecast["09:00:00"]["temp"] + "<br>";
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["09:00:00"]["icon"] + '.png">';
+    document.getElementById("1w").innerHTML+= iconImage;
+    document.getElementById("1w").innerHTML+= "<br>09:00";
+
+
+    document.getElementById("2w").innerHTML= weatherForecast["12:00:00"]["weather"] + "<br>";
+    document.getElementById("2w").innerHTML+= weatherForecast["12:00:00"]["temp"] + "<br>";
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["12:00:00"]["icon"] + '.png">';
+    document.getElementById("2w").innerHTML+= iconImage;
+    document.getElementById("2w").innerHTML+= "<br>12:00";
+
+    document.getElementById("3w").innerHTML= weatherForecast["15:00:00"]["weather"] + "<br>";
+    document.getElementById("3w").innerHTML+= weatherForecast["15:00:00"]["temp"] + "<br>";
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["15:00:00"]["icon"] + '.png">';
+    document.getElementById("3w").innerHTML+= iconImage;
+    document.getElementById("3w").innerHTML+=  "<br>15:00";
+
+
+    document.getElementById("4w").innerHTML= weatherForecast["18:00:00"]["weather"] + "<br>";
+    document.getElementById("4w").innerHTML+= weatherForecast["18:00:00"]["temp"] + "<br>";
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["18:00:00"]["icon"] + '.png" style="height: 30px;">';
+    document.getElementById("4w").innerHTML+= iconImage;
+    document.getElementById("4w").innerHTML+=  "<br>18:00";
+
+    /* Create chart for the predicted bike availability for that day */
+    makeChart(chartData, total_stands);
+    document.getElementById("graphHeading").innerHTML = "PREDICTED BIKE AVAILABILITY FOR " + date;
+
+
+    /* Display data in the box to the side */
+    /* Use spans specified below to display correctly, ignore id names here */
+    document.getElementById("name2").innerHTML = "Name: " + station_name;
+    document.getElementById("status2").innerHTML ="Predicted Number of Bikes: " + predictedBikes;
+    document.getElementById("banking2").innerHTML = "Predicted Date and Time: " + date + " " + time;
+
+    /* Set other spans not used to empty */
+    document.getElementById("bikes2").innerHTML ="";
+    document.getElementById("stands2").innerHTML = "";
+    document.getElementById("updated2").innerHTML = "";
+    });
+}
+</script>
+
+<!--CHANGE FORM FIELD-->
+<script>
+  function changeStationNameField(statName) {
+    /* Replace utf-8 encoded ' with ' */
+    var new_station_name = statName.replace(/&#39;/g, "'");
+    document.getElementById("station_name").value = new_station_name;
+  }
+</script>
+</body>
+</html>
