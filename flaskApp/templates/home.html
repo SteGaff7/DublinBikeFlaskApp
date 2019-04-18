@@ -39,17 +39,19 @@
     #weather {box-sizing: border-box;}
     #submit {margin-top: 1%; width: 32%; background-color: #234a55; color: white; border: solid; padding: 1%}
     #topDiv {padding-bottom: 0%; font-size: 12pt;}
-    #data {width: 100%; background-color: white; padding-bottom: 1%; font-size: 10pt;}
+    #data {width: 100%; background-color: white; padding-bottom: 1%; font-size: 11pt;}
     #data1 {float: left; width: 50%;}
     #data2 {float: right; width: 50%;}
     #Form {margin-right: 2%; width:35%; float:right;}
-    #title { font-size: 10pt; background-color: #234a55; color: white; height: 29%; text-align: center; padding-top: 1%; padding-bottom: 5%;}
-    #weatherHeading { font-size: 10pt; background-color: #234a55; color: white; text-align: center; height: 19%; padding-top: 1%; padding-bottom: 3%; margin-top: 10%; margin-bottom: 1%;}
-    #graphHeading { font-size: 10pt; background-color: #234a55; color: white; text-align: center; height: 10%; padding-top: 1%; padding-bottom: 2%; margin-top: 17%; margin-bottom: 0%;}
+    #title { font-size: 11pt; background-color: #234a55; color: white; height: 29%; text-align: center; padding-top: 1%; padding-bottom: 5%;}
+    #weatherHeading { font-size: 11pt; background-color: #234a55; color: white; text-align: center; height: 19%; padding-top: 1%; padding-bottom: 3%; margin-top: 10%; margin-bottom: 1%;}
+    #graphHeading { font-size: 11pt; background-color: #234a55; color: white; text-align: center; height: 10%; padding-top: 1%; padding-bottom: 2%; margin-top: 17%; margin-bottom: 0%;}
     #graph {height: 5vw;}
     #bottomDiv {height: 10vw; padding-bottom: 3%;}
     #1w {margin-left: 5%;}
     #map {height:33vw; width:60vw; margin-left:1%; margin-top:0%; margin-bottom:1%;}
+    .footer {position: none; left: 0; bottom: 0; width: 100%; background-color: #234a55; color: white;
+   text-align:left; padding-top: 1%; padding-left: 1%; padding-bottom: 1%;}
 }
 <span class="metadata-marker" style="display: none;" data-region_tag="css"></span>
 </style>
@@ -144,11 +146,13 @@
  <!-- GOOGLE MAP INTERFACE -->
 <span class="metadata-marker" style="display: none;" data-region_tag="html-body"></span>
 <div id="map">Map goes here</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>&copy; 2019 dublinbikes. All Rights Reserved.</p>
 </div>
- <!-- FOOTER -->
-<footer class="footer" style="height:5%; padding: 1%; margin-top: 2%;">
-    <p> &copy; 2019 dublinbikes. All Rights Reserved.</p>
-</footer>
+</div>
+
 <!--SCRIPTS-->
 <!--MAP, MARKERS & ONCLICK SCRIPTS-->
 <script>
@@ -549,22 +553,22 @@ function predictive() {
     document.getElementById("weatherHeading").innerHTML = "WEATHER FORECAST FOR " + date;
     document.getElementById("1w").innerHTML= weatherForecast["09:00:00"]["weather"] + "<br>";
     document.getElementById("1w").innerHTML+= weatherForecast["09:00:00"]["temp"] + "<br>";
-    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["09:00:00"]["icon"] + '.png">';
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["09:00:00"]["icon"] + '.png" style="height: 5vw">';
     document.getElementById("1w").innerHTML+= iconImage;
     document.getElementById("1w").innerHTML+= "<br>09:00";
     document.getElementById("2w").innerHTML= weatherForecast["12:00:00"]["weather"] + "<br>";
     document.getElementById("2w").innerHTML+= weatherForecast["12:00:00"]["temp"] + "<br>";
-    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["12:00:00"]["icon"] + '.png">';
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["12:00:00"]["icon"] + '.png" style="height: 5vw">';
     document.getElementById("2w").innerHTML+= iconImage;
     document.getElementById("2w").innerHTML+= "<br>12:00";
     document.getElementById("3w").innerHTML= weatherForecast["15:00:00"]["weather"] + "<br>";
     document.getElementById("3w").innerHTML+= weatherForecast["15:00:00"]["temp"] + "<br>";
-    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["15:00:00"]["icon"] + '.png">';
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["15:00:00"]["icon"] + '.png" style="height: 5vw">';
     document.getElementById("3w").innerHTML+= iconImage;
     document.getElementById("3w").innerHTML+=  "<br>15:00";
     document.getElementById("4w").innerHTML= weatherForecast["18:00:00"]["weather"] + "<br>";
     document.getElementById("4w").innerHTML+= weatherForecast["18:00:00"]["temp"] + "<br>";
-    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["18:00:00"]["icon"] + '.png">';
+    var iconImage = '<img src='+'"http://openweathermap.org/img/w/' + weatherForecast["18:00:00"]["icon"] + '.png" style="height: 5vw">';
     document.getElementById("4w").innerHTML+= iconImage;
     document.getElementById("4w").innerHTML+=  "<br>18:00";
     /* Create chart for the predicted bike availability for that day */
@@ -574,9 +578,9 @@ function predictive() {
     /* Use spans specified below to display correctly, ignore id names here */
     document.getElementById("name2").innerHTML = "Name: " + station_name;
     document.getElementById("status2").innerHTML ="Predicted Number of Bikes: " + predictedBikes;
-    document.getElementById("banking2").innerHTML = "Predicted Date and Time: " + date + " " + time;
+    document.getElementById("banking2").innerHTML = "";
     /* Set other spans not used to empty */
-    document.getElementById("bikes2").innerHTML ="";
+    document.getElementById("bikes2").innerHTML ="Time: " + time;;
     document.getElementById("stands2").innerHTML = "";
     document.getElementById("updated2").innerHTML = "";
     });
