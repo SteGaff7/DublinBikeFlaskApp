@@ -1,0 +1,17 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549895012.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "user": "UG3R1QKHB",
+        "type": "message",
+        "subtype": "app_conversation_join",
+        "ts": "1549896110.000400",
+        "text": "<@UG3R1QKHB> was added to this conversation",
+        "inviter": "UG51E6DML"
+    }
+]

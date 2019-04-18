@@ -1,0 +1,20 @@
+[
+    {
+        "client_msg_id": "768d06a5-a900-4f5d-bed9-0780c8fccc28",
+        "type": "message",
+        "text": "======================\n** Sprint 2 - Day 3 **\n27\/02\/2019\n08:50-09:00\n\n- Continue working through the task allocated yesterday.\n- Look into Google Maps APi\n- Investigate the different ways to connect to the database",
+        "user": "UG51E6DML",
+        "ts": "1551348495.002100"
+    },
+    {
+        "client_msg_id": "f170a552-b40c-4161-86a1-b44fca520262",
+        "type": "message",
+        "text": "======================\n** Sprint 2 - Day 4 **\n28\/02\/2019\n09:00-09:10\n\n- Finish the HTML and CSS\n- Work on connection and into pandas and pymysql\n- Error handling on the scripts\n- JQuery investigation\n- Integrate the Maps API",
+        "user": "UG51E6DML",
+        "ts": "1551348612.004100",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1551356379.000000"
+        }
+    }
+]

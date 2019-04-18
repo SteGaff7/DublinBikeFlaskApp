@@ -1,0 +1,16 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550349469.000200",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "client_msg_id": "73a54fa1-99ab-42f3-bf7a-2a847d4d2fde",
+        "type": "message",
+        "text": "created local server to test connectivity and writing to",
+        "user": "UG2S7PMUG",
+        "ts": "1550349495.000600"
+    }
+]

@@ -1,0 +1,81 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137152.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "client_msg_id": "1f7a011c-37c9-4272-97c8-e0e4de55eea3",
+        "type": "message",
+        "text": "Put logins here",
+        "user": "UG51E6DML",
+        "ts": "1550137157.000400"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137316.000600",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137316.000800",
+        "text": "<@UG2S7PMUG> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "client_msg_id": "baa101d2-026a-4de4-bb45-cbac4a850dd0",
+        "type": "message",
+        "text": "Open weather:",
+        "user": "UG3R258CD",
+        "ts": "1550137331.001100"
+    },
+    {
+        "client_msg_id": "87162f88-6479-417c-a9e6-975f5af7a1af",
+        "type": "message",
+        "text": "Open Weather - username: klowe password: Kerrie16",
+        "user": "UG3R258CD",
+        "ts": "1550137349.001600"
+    },
+    {
+        "client_msg_id": "aaf311c8-a07e-43ce-9e8b-81ea38b45ebd",
+        "type": "message",
+        "text": "JCDecaux - email: <mailto:kerrie.lowe@ucdconnect.ie|kerrie.lowe@ucdconnect.ie> password: Kerrie16",
+        "user": "UG3R258CD",
+        "ts": "1550137418.002300"
+    },
+    {
+        "client_msg_id": "b3289569-4989-49db-b044-252f61908a26",
+        "type": "message",
+        "text": "JCDecaux API: b85fd05ade8886b81edd6b73fb8dd52af1a25b63",
+        "user": "UG3R258CD",
+        "ts": "1550137444.002500"
+    },
+    {
+        "client_msg_id": "dbb17d08-6098-4fe6-882f-a6e0108d8a13",
+        "type": "message",
+        "text": "Open Weather API: 2d416fd43fd5af00ac0c517955dc98e5",
+        "user": "UG3R258CD",
+        "ts": "1550137459.002700"
+    },
+    {
+        "client_msg_id": "d8120264-83a2-4635-b0c4-19f9600f04a5",
+        "type": "message",
+        "text": "AWS - email: <mailto:kerrie.lowe@ucdconnect.ie|kerrie.lowe@ucdconnect.ie> password: Kerrie16",
+        "user": "UG3R258CD",
+        "ts": "1550140594.003400"
+    },
+    {
+        "client_msg_id": "0a993900-6a25-48ac-a99d-57dacd4b1c83",
+        "type": "message",
+        "text": "AWS\/EC2 : email: <mailto:stephengaff7@gmail.com|stephengaff7@gmail.com>",
+        "user": "UG2S7PMUG",
+        "ts": "1550140631.003700"
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549894992.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_purpose",
+        "ts": "1549894992.000300",
+        "text": "<@UG51E6DML> set the channel purpose: All things design",
+        "purpose": "All things design"
+    }
+]

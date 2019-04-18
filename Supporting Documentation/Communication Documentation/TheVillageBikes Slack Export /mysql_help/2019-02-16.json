@@ -1,0 +1,44 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550349536.000200",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_purpose",
+        "ts": "1550349537.000300",
+        "text": "<@UG2S7PMUG> set the channel purpose: Commands and MYSQL help",
+        "purpose": "Commands and MYSQL help"
+    },
+    {
+        "client_msg_id": "3304edab-e82d-4e10-826f-44622d63816f",
+        "type": "message",
+        "text": "MYSQL from the command line: <https:\/\/www.a2hosting.com\/kb\/developer-corner\/mysql\/managing-mysql-databases-and-users-from-the-command-line>",
+        "user": "UG2S7PMUG",
+        "ts": "1550349561.000600",
+        "edited": {
+            "user": "UG2S7PMUG",
+            "ts": "1550349591.000000"
+        }
+    },
+    {
+        "client_msg_id": "6fb1f3b1-9777-40c8-a58a-e4d9d1ba1be1",
+        "type": "message",
+        "text": "More MYSQL commands: <http:\/\/g2pc1.bu.edu\/~qzpeng\/manual\/MySQL%20Commands.htm>",
+        "user": "UG2S7PMUG",
+        "ts": "1550349580.001000"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550349769.001200",
+        "text": "<@UG2S7PMUG> has renamed the channel from \"mysqlhelp\" to \"mysql__help\"",
+        "old_name": "mysqlhelp",
+        "name": "mysql__help"
+    }
+]

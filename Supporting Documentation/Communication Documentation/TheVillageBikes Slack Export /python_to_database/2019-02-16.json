@@ -1,0 +1,52 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550349630.000200",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "client_msg_id": "1374d84f-b54b-4bbd-8868-22b5ad113f39",
+        "type": "message",
+        "text": "Using python to write to databases: <https:\/\/pynative.com\/python-mysql-insert-data-into-database-table\/>",
+        "user": "UG2S7PMUG",
+        "ts": "1550349647.000500",
+        "attachments": [
+            {
+                "service_name": "pynative",
+                "title": "Python MySQL Insert Data Into Table [Complete Guide]",
+                "title_link": "https:\/\/pynative.com\/python-mysql-insert-data-into-database-table\/",
+                "text": "Python MySQL insert single and multiple rows into MySQL table. Insert Integer, string, float, double, and datetime variable type into the table. Use a parameterized query to insert dynamic data into a MySQL table in Python",
+                "fallback": "pynative: Python MySQL Insert Data Into Table [Complete Guide]",
+                "image_url": "https:\/\/pynative.com\/wp-content\/uploads\/2019\/02\/python_mysql_insert_data.png",
+                "image_width": 299,
+                "image_height": 238,
+                "ts": 1530459881,
+                "from_url": "https:\/\/pynative.com\/python-mysql-insert-data-into-database-table\/",
+                "image_bytes": 5086,
+                "service_icon": "https:\/\/pynative.com\/wp-content\/uploads\/2018\/06\/cropped-favicon-180x180.png?x87750",
+                "id": 1,
+                "original_url": "https:\/\/pynative.com\/python-mysql-insert-data-into-database-table\/"
+            }
+        ]
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550349754.000700",
+        "text": "<@UG2S7PMUG> has renamed the channel from \"python__database\" to \"python__datab__help\"",
+        "old_name": "python__database",
+        "name": "python__datab__help"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550349809.000800",
+        "text": "<@UG2S7PMUG> has renamed the channel from \"python__datab__help\" to \"python-to-datab__help\"",
+        "old_name": "python__datab__help",
+        "name": "python-to-datab__help"
+    }
+]

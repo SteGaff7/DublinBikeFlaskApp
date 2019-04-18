@@ -1,0 +1,37 @@
+[
+    {
+        "client_msg_id": "7cd50520-1ed4-4215-ba0b-d2287f656266",
+        "type": "message",
+        "text": "<https:\/\/www.youtube.com\/watch?v=SWYqp7iY_Tc>",
+        "user": "UG51E6DML",
+        "ts": "1550515398.000200",
+        "attachments": [
+            {
+                "service_name": "YouTube",
+                "service_url": "https:\/\/www.youtube.com\/",
+                "title": "Git &amp; GitHub Crash Course For Beginners",
+                "title_link": "https:\/\/www.youtube.com\/watch?v=SWYqp7iY_Tc",
+                "author_name": "Traversy Media",
+                "author_link": "https:\/\/www.youtube.com\/user\/TechGuyWeb",
+                "thumb_url": "https:\/\/i.ytimg.com\/vi\/SWYqp7iY_Tc\/hqdefault.jpg",
+                "thumb_width": 480,
+                "thumb_height": 360,
+                "fallback": "YouTube Video: Git & GitHub Crash Course For Beginners",
+                "video_html": "<iframe width=\"400\" height=\"225\" src=\"https:\/\/www.youtube.com\/embed\/SWYqp7iY_Tc?feature=oembed&autoplay=1&iv_load_policy=3\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen><\/iframe>",
+                "video_html_width": 400,
+                "video_html_height": 225,
+                "from_url": "https:\/\/www.youtube.com\/watch?v=SWYqp7iY_Tc",
+                "service_icon": "https:\/\/a.slack-edge.com\/2089\/img\/unfurl_icons\/youtube.png",
+                "id": 1,
+                "original_url": "https:\/\/www.youtube.com\/watch?v=SWYqp7iY_Tc"
+            }
+        ]
+    },
+    {
+        "client_msg_id": "c794245e-04d6-4774-bd14-701ca75084ca",
+        "type": "message",
+        "text": "Definitely worth the 30 mins watch. Take notes and we will be sorted going forward. Touches on branches as well which look very handy!",
+        "user": "UG51E6DML",
+        "ts": "1550515445.001300"
+    }
+]

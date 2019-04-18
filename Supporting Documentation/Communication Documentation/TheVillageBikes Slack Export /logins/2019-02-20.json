@@ -1,0 +1,20 @@
+[
+    {
+        "client_msg_id": "6ba61f1c-54fe-4e98-acf7-6f9e6dc9e63a",
+        "type": "message",
+        "text": "RDS AWS email: <mailto:stephengaff7@gmail.com|stephengaff7@gmail.com> password klopi111",
+        "user": "UG2S7PMUG",
+        "ts": "1550657198.000900"
+    },
+    {
+        "client_msg_id": "541f03f3-74ef-4bb2-9dad-21728b5c0f87",
+        "type": "message",
+        "text": "EC2 on Kerrie's AWS email: <mailto:Kerrie.lowe@ucdconnect.ie|Kerrie.lowe@ucdconnect.ie>",
+        "user": "UG2S7PMUG",
+        "ts": "1550657247.001900",
+        "edited": {
+            "user": "UG2S7PMUG",
+            "ts": "1550657268.000000"
+        }
+    }
+]

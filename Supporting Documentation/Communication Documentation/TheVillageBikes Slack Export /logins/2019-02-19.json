@@ -1,0 +1,45 @@
+[
+    {
+        "client_msg_id": "1e99495b-aa5d-4581-8c61-cf0f04b93b95",
+        "type": "message",
+        "text": "key for ec2:",
+        "user": "UG3R258CD",
+        "ts": "1550567441.000200"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "FGBUSRHGE",
+                "created": 1550567483,
+                "timestamp": 1550567483,
+                "name": "villagebikesec2.pem.txt",
+                "title": "villagebikesec2.pem.txt",
+                "mimetype": "text\/plain",
+                "filetype": "text",
+                "pretty_type": "Plain Text",
+                "user": "UG3R258CD",
+                "editable": true,
+                "size": 1696,
+                "mode": "snippet",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/TG2S6ASBA-FGBUSRHGE\/villagebikesec2.pem.txt?t=xoxe-546890366384-593552105155-593552105235-bb0805523db65808b98f5c4c48f95e97",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/TG2S6ASBA-FGBUSRHGE\/download\/villagebikesec2.pem.txt?t=xoxe-546890366384-593552105155-593552105235-bb0805523db65808b98f5c4c48f95e97",
+                "permalink": "https:\/\/thevillagebikes.slack.com\/files\/UG3R258CD\/FGBUSRHGE\/villagebikesec2.pem.txt",
+                "permalink_public": "https:\/\/slack-files.com\/TG2S6ASBA-FGBUSRHGE-caad1934b9",
+                "edit_link": "https:\/\/thevillagebikes.slack.com\/files\/UG3R258CD\/FGBUSRHGE\/villagebikesec2.pem.txt\/edit",
+                "has_rich_preview": false
+            }
+        ],
+        "upload": true,
+        "user": "UG3R258CD",
+        "display_as_bot": false,
+        "ts": "1550567483.000300"
+    }
+]

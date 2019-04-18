@@ -1,0 +1,31 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550661835.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "client_msg_id": "b6a9a39a-20db-4007-87df-66c885062d4f",
+        "type": "message",
+        "text": "** Sprint 1 - Day 9 **\n19\/02\/19\n09:00 - 10:50\n\n- Connect to AWS\n- Set up EC2\n- Create database tables on RDS\n- Scrape Static data\n- Mock up\n- SRS",
+        "user": "UG51E6DML",
+        "ts": "1550661936.001700",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1550746227.000000"
+        }
+    },
+    {
+        "client_msg_id": "75c8d0b1-52f7-4274-9613-0fd4b3409b25",
+        "type": "message",
+        "text": "===========================\n** Sprint 1 - Day 10 **\n20\/02\/19\n11:10 - 11:20\n\n- Brought up every to speed on connection\n- Tasked with pushing finished dynamic script to EC2 and run on RDS\n- Look into burn-down charts",
+        "user": "UG51E6DML",
+        "ts": "1550662060.003700",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1550746319.000000"
+        }
+    }
+]

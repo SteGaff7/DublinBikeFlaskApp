@@ -1,0 +1,13 @@
+[
+    {
+        "client_msg_id": "898c7669-2b44-4ced-aa5a-1785293a18b1",
+        "type": "message",
+        "text": "**Sprint 1 - Midpoint Review**\n17\/02\/19\n15:00 - 16:30\n\nAchieved:\n- Design Sketch - version 1\n- Connected to API’s\n- Pulling from API’s\n- Built a test.py Program (scraps API and stores in local database)\n\nTo-Do:\n- Complete Product Description\n- Complete Requirements\n- Complete Elicitation\n- Complete DB Tables\n- Pull from API’s to AWS database",
+        "user": "UG51E6DML",
+        "ts": "1550421281.000900",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1550422915.000000"
+        }
+    }
+]

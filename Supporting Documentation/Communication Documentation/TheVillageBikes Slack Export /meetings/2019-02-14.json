@@ -1,0 +1,29 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137325.000200",
+        "text": "<@UG2S7PMUG> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137326.000400",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "client_msg_id": "1e2750b0-9505-41e3-9cd5-e2298e194da0",
+        "type": "message",
+        "text": "**Sprint 1 - Day 1**\n14\/02\/19\n09:00 - 10:50\n\n- Made a plan for Sprint 1\n- Talked through deliverable for following meeting\n- Talked through design\n- Set up AWS\n- Set up Trello\n- Requested keys for Dublin Bike &amp; Weather API",
+        "user": "UG51E6DML",
+        "ts": "1550141719.002700",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1550746274.000000"
+        }
+    }
+]

@@ -1,0 +1,37 @@
+[
+    {
+        "client_msg_id": "fad362ca-b0c3-4ca9-bc6e-a62bccf309fa",
+        "type": "message",
+        "text": "Just a reminder when closing EC2 terminal type exit to return to local machine before exiting",
+        "user": "UG2S7PMUG",
+        "ts": "1550837695.001500"
+    },
+    {
+        "client_msg_id": "72957578-8ef3-4f83-96ad-bad9bda48442",
+        "type": "message",
+        "text": "Did something happen?",
+        "user": "UG51E6DML",
+        "ts": "1550838331.001700"
+    },
+    {
+        "client_msg_id": "efa25d28-5633-46f4-a3e5-75659c106432",
+        "type": "message",
+        "text": "Nope but said I'd say it just in case ",
+        "user": "UG2S7PMUG",
+        "ts": "1550841301.002300"
+    },
+    {
+        "client_msg_id": "113d640b-32ad-428b-86db-68494a851725",
+        "type": "message",
+        "text": "Cool beans",
+        "user": "UG3R258CD",
+        "ts": "1550841942.002500"
+    },
+    {
+        "client_msg_id": "aa8b3ef8-4d09-419d-9e86-94280ae06dc0",
+        "type": "message",
+        "text": "Okay sweet. Thought i’d done it :rolling_on_the_floor_laughing:",
+        "user": "UG51E6DML",
+        "ts": "1550852514.000400"
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "client_msg_id": "635fc42c-3d89-4c03-b800-8fc81ffbb4af",
+        "type": "message",
+        "text": "def connect_database():\n    host = “<http:\/\/villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com|villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com>”\n    port=3306\n    dbname = “VillageBikesDB”\n    user=“ssk”\n    password=“villagebikes”\n\n    connection = pymysql.connect(host, user=user,\n    passwd=password, db=dbname)\n\n    return connection\n\nconnection = connect_database()",
+        "user": "UG51E6DML",
+        "ts": "1551198065.000200"
+    },
+    {
+        "client_msg_id": "22c01992-25be-4a01-8624-9ab8d8e27bd0",
+        "type": "message",
+        "text": "then run the usual stuff <@UG2S7PMUG>",
+        "user": "UG51E6DML",
+        "ts": "1551198084.000500"
+    }
+]

@@ -1,0 +1,477 @@
+[
+    {
+        "id": "CG3DT1P1A",
+        "name": "analytics",
+        "created": "1549895043",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "All this DATA",
+            "creator": "UG51E6DML",
+            "last_set": "1549895043"
+        }
+    },
+    {
+        "id": "CG3JC24TU",
+        "name": "random",
+        "created": "1549894939",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "Non-work banter and water cooler conversation",
+            "creator": "UG51E6DML",
+            "last_set": "1549894939"
+        },
+        "purpose": {
+            "value": "A place for non-work-related flimflam, faffing, hodge-podge or jibber-jabber you'd prefer to keep out of more focused work-related channels.",
+            "creator": "UG51E6DML",
+            "last_set": "1549894939"
+        }
+    },
+    {
+        "id": "CG3QF0ESZ",
+        "name": "website",
+        "created": "1549894940",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG3QFS005",
+        "name": "design",
+        "created": "1549894992",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "All things design",
+            "creator": "UG51E6DML",
+            "last_set": "1549894992"
+        }
+    },
+    {
+        "id": "CG3QG7T1B",
+        "name": "source_code",
+        "created": "1549895012",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG51E6UGN",
+        "name": "general",
+        "created": "1549894939",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": true,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "Company-wide announcements and work-based matters",
+            "creator": "UG51E6DML",
+            "last_set": "1549894939"
+        },
+        "purpose": {
+            "value": "This channel is for workspace-wide communication and announcements. All members are in this channel.",
+            "creator": "UG51E6DML",
+            "last_set": "1549894939"
+        }
+    },
+    {
+        "id": "CG5UWRBT8",
+        "name": "meetings",
+        "created": "1549965599",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG658TBNU",
+        "name": "database",
+        "created": "1550140446",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG6N91BEX",
+        "name": "bikes_data",
+        "created": "1550137195",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG6RL4A8J",
+        "name": "weather_data",
+        "created": "1550137186",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG88SEWHL",
+        "name": "logins",
+        "created": "1550137151",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG8EPRV89",
+        "name": "python_to_database",
+        "created": "1550349630",
+        "creator": "UG2S7PMUG",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG8GLU724",
+        "name": "flask",
+        "created": "1550422014",
+        "creator": "UG3R258CD",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "Information about Flask",
+            "creator": "UG3R258CD",
+            "last_set": "1550422014"
+        }
+    },
+    {
+        "id": "CG90RFCQ4",
+        "name": "json_to_python",
+        "created": "1550349675",
+        "creator": "UG2S7PMUG",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG9241QQ2",
+        "name": "server",
+        "created": "1550349469",
+        "creator": "UG2S7PMUG",
+        "is_archived": false,
+        "is_general": false,
+        "members": [],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG9248U74",
+        "name": "mysql_help",
+        "created": "1550349536",
+        "creator": "UG2S7PMUG",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "Commands and MYSQL help",
+            "creator": "UG2S7PMUG",
+            "last_set": "1550349537"
+        }
+    },
+    {
+        "id": "CG99DDGR0",
+        "name": "github_info",
+        "created": "1550423132",
+        "creator": "UG3R258CD",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CG9GLH8LD",
+        "name": "requirements",
+        "created": "1550406054",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CGB0ZTUL8",
+        "name": "standups",
+        "created": "1550661835",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CGBHWRB43",
+        "name": "ec2",
+        "created": "1550657629",
+        "creator": "UG2S7PMUG",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG2S7PMUG",
+            "UG3R258CD",
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    },
+    {
+        "id": "CH52H04CE",
+        "name": "design_changes",
+        "created": "1553009169",
+        "creator": "UG51E6DML",
+        "is_archived": false,
+        "is_general": false,
+        "members": [
+            "UG51E6DML"
+        ],
+        "topic": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        },
+        "purpose": {
+            "value": "",
+            "creator": "",
+            "last_set": "0"
+        }
+    }
+]

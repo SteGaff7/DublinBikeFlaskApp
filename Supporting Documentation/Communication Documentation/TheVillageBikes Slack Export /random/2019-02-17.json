@@ -1,0 +1,26 @@
+[
+    {
+        "client_msg_id": "e93c54fc-2e30-4e2a-8fb1-5b69413f1e6d",
+        "type": "message",
+        "text": "<https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972>",
+        "user": "UG3R258CD",
+        "ts": "1550421860.000200",
+        "attachments": [
+            {
+                "service_name": "Code Envato Tuts+",
+                "title": "Creating a Web App From Scratch Using Python Flask and MySQL",
+                "title_link": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972",
+                "text": "In this series, we'll be using Python, Flask and MySQL to create a simple web application from scratch. It will be a simple bucket list application where users can register, sign in and create...",
+                "fallback": "Code Envato Tuts+: Creating a Web App From Scratch Using Python Flask and MySQL",
+                "image_url": "https:\/\/cms-assets.tutsplus.com\/uploads\/users\/34\/posts\/22972\/preview_image\/python.png",
+                "from_url": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972",
+                "image_width": 361,
+                "image_height": 250,
+                "image_bytes": 26086,
+                "service_icon": "https:\/\/static.tutsplus.com\/assets\/apple-touch-icon-edce48c2c1293474a34fa8f1c87b5685.png",
+                "id": 1,
+                "original_url": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972"
+            }
+        ]
+    }
+]
