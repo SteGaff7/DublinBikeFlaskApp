@@ -1,0 +1,50 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550349675.000200",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "client_msg_id": "3b02aec2-a299-4526-8ea2-8ca0fdf190c9",
+        "type": "message",
+        "text": "Scraping JSON with python: <https:\/\/stackoverflow.com\/questions\/12965203\/how-to-get-json-from-webpage-into-python-script>",
+        "user": "UG2S7PMUG",
+        "ts": "1550349696.000700",
+        "attachments": [
+            {
+                "service_name": "Stack Overflow",
+                "title": "How to get JSON from webpage into Python script",
+                "title_link": "https:\/\/stackoverflow.com\/questions\/12965203\/how-to-get-json-from-webpage-into-python-script",
+                "text": "Got the following code in one of my scripts: # # url is defined above. # jsonurl = urlopen(url) # # While trying to debug, I put this in: # print jsonurl # # Was hoping text would contain the ac...",
+                "fallback": "Stack Overflow: How to get JSON from webpage into Python script",
+                "thumb_url": "https:\/\/cdn.sstatic.net\/Sites\/stackoverflow\/img\/apple-touch-icon@2.png?v=73d79a89bded",
+                "from_url": "https:\/\/stackoverflow.com\/questions\/12965203\/how-to-get-json-from-webpage-into-python-script",
+                "thumb_width": 316,
+                "thumb_height": 316,
+                "service_icon": "https:\/\/cdn.sstatic.net\/Sites\/stackoverflow\/img\/favicon.ico?v=4f32ecc8f43d",
+                "id": 1,
+                "original_url": "https:\/\/stackoverflow.com\/questions\/12965203\/how-to-get-json-from-webpage-into-python-script"
+            }
+        ]
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550349735.000900",
+        "text": "<@UG2S7PMUG> has renamed the channel from \"json__python\" to \"json__python__help\"",
+        "old_name": "json__python",
+        "name": "json__python__help"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550349789.001000",
+        "text": "<@UG2S7PMUG> has renamed the channel from \"json__python__help\" to \"json-to-python__help\"",
+        "old_name": "json__python__help",
+        "name": "json-to-python__help"
+    }
+]

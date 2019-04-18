@@ -1,0 +1,39 @@
+[
+    {
+        "client_msg_id": "212e26ed-34e3-4dcb-b06a-5893b87ba214",
+        "type": "message",
+        "text": "Google Maps Key (JavaScript API):\n\nAIzaSyDvDRog7iZgLLBXNLOOdGfX1M-lNegQVks",
+        "user": "UG51E6DML",
+        "ts": "1551204887.000600"
+    },
+    {
+        "client_msg_id": "d05d9488-e039-42ef-8747-be7f509da1bc",
+        "type": "message",
+        "text": "<https:\/\/developers.google.com\/maps\/documentation\/javascript\/adding-a-google-map>",
+        "user": "UG51E6DML",
+        "ts": "1551204904.000800",
+        "attachments": [
+            {
+                "service_name": "Google Developers",
+                "title": "Adding a Google Map with a Marker to Your Website  |  Maps JavaScript API        |  Google Developers",
+                "title_link": "https:\/\/developers.google.com\/maps\/documentation\/javascript\/adding-a-google-map",
+                "fallback": "Google Developers: Adding a Google Map with a Marker to Your Website  |  Maps JavaScript API        |  Google Developers",
+                "image_url": "https:\/\/developers.google.com\/_static\/9b77c2a144\/images\/share\/devsite-white.png",
+                "image_width": 476,
+                "image_height": 250,
+                "from_url": "https:\/\/developers.google.com\/maps\/documentation\/javascript\/adding-a-google-map",
+                "image_bytes": 60975,
+                "service_icon": "https:\/\/developers.google.com\/_static\/9b77c2a144\/images\/touch-icon.png",
+                "id": 1,
+                "original_url": "https:\/\/developers.google.com\/maps\/documentation\/javascript\/adding-a-google-map"
+            }
+        ]
+    },
+    {
+        "client_msg_id": "17ab96f0-c3f3-4a4a-9cf5-e3c637c3a9e2",
+        "type": "message",
+        "text": "Basic to get us up and running",
+        "user": "UG51E6DML",
+        "ts": "1551204913.001300"
+    }
+]

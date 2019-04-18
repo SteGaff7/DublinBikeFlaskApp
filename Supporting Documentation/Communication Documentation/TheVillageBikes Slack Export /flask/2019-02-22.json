@@ -1,0 +1,23 @@
+[
+    {
+        "client_msg_id": "92c3013a-db49-4f19-8da3-d044502b7c83",
+        "type": "message",
+        "text": "I put up a rough template to github",
+        "user": "UG51E6DML",
+        "ts": "1550854699.000300"
+    },
+    {
+        "client_msg_id": "8cb9a25e-1b02-4370-b996-eb9723813d26",
+        "type": "message",
+        "text": "<@UG2S7PMUG> can you connect the repository to slack please.",
+        "user": "UG51E6DML",
+        "ts": "1550854723.000800"
+    },
+    {
+        "client_msg_id": "e39e8e21-91f8-441b-a40d-dc8ec3289c3c",
+        "type": "message",
+        "text": "just use ‘\/github’ and it will prompt you how to connect the repo",
+        "user": "UG51E6DML",
+        "ts": "1550854755.001500"
+    }
+]

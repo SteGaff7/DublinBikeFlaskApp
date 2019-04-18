@@ -1,0 +1,13 @@
+[
+    {
+        "client_msg_id": "b31d7a62-4461-442d-857e-0001b18b7339",
+        "type": "message",
+        "text": "===========================\n** Sprint 1 - Day 11 **\n20\/02\/19\n09:00-10:50\n\n- Connect the weather API to our database. This API is only coming through every 30 mins. For this reason we will only pull the data every 30 mins.\n- Sort out the burn-down chart\n- Script for dynamic data and connect + pull to the database\n- Lockdown the design for the website (Colours scheme, Build out the rest of the page)",
+        "user": "UG51E6DML",
+        "ts": "1550742110.004400",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1550746211.000000"
+        }
+    }
+]

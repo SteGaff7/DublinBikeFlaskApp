@@ -1,0 +1,222 @@
+[
+    {
+        "client_msg_id": "8fac7d16-e8ba-4615-bf08-bc1cc9c77bfe",
+        "type": "message",
+        "text": "<https:\/\/help.dreamhost.com\/hc\/en-us\/articles\/115001753671-Connect-to-your-instance-with-SSH-keys-in-Mac-or-Linux>",
+        "user": "UG51E6DML",
+        "ts": "1550776634.000600",
+        "attachments": [
+            {
+                "service_name": "DreamHost",
+                "title": "Connect to your instance with SSH keys in Mac or Linux",
+                "title_link": "https:\/\/help.dreamhost.com\/hc\/en-us\/articles\/115001753671-Connect-to-your-instance-with-SSH-keys-in-Mac-or-Linux",
+                "text": "To log in, you'll need your User and IP Address of the instance. How to find the default user of an image Locating IP Address of your instance Using Mac &amp; Linux First, create a key pair. You ...",
+                "fallback": "DreamHost: Connect to your instance with SSH keys in Mac or Linux",
+                "image_url": "https:\/\/theme.zdassets.com\/theme_assets\/808026\/f5a632c04387e943991e9c334c7b3b1e7254b8ea.png",
+                "from_url": "https:\/\/help.dreamhost.com\/hc\/en-us\/articles\/115001753671-Connect-to-your-instance-with-SSH-keys-in-Mac-or-Linux",
+                "image_width": 1200,
+                "image_height": 168,
+                "image_bytes": 20167,
+                "service_icon": "http:\/\/theme.zdassets.com\/theme_assets\/808026\/5c4b32ea7e1254b46d04acd0a4a324f0249f97e5.ico",
+                "id": 1,
+                "original_url": "https:\/\/help.dreamhost.com\/hc\/en-us\/articles\/115001753671-Connect-to-your-instance-with-SSH-keys-in-Mac-or-Linux"
+            }
+        ]
+    },
+    {
+        "client_msg_id": "7e303e30-a7ff-47d2-8935-4a0930fa3f0b",
+        "type": "message",
+        "text": "That is the whole step",
+        "user": "UG51E6DML",
+        "ts": "1550776645.001000"
+    },
+    {
+        "client_msg_id": "f589cbbe-aabd-49a7-ab31-5333c9bd8a8e",
+        "type": "message",
+        "text": "noice",
+        "user": "UG3R258CD",
+        "ts": "1550778483.001200"
+    },
+    {
+        "client_msg_id": "eabc15b2-f56a-4a03-8033-4fd2380a854e",
+        "type": "message",
+        "text": "i just did it up there",
+        "user": "UG3R258CD",
+        "ts": "1550778492.001600"
+    },
+    {
+        "client_msg_id": "fe435e05-86a5-43de-9710-e637ddcd443a",
+        "type": "message",
+        "text": "Data is coming in thick and fast  :eyes:\n7300 rows in 3 hours ",
+        "user": "UG2S7PMUG",
+        "ts": "1550778603.002200"
+    },
+    {
+        "client_msg_id": "7a391ca8-5c78-434f-af73-89c18e70b106",
+        "type": "message",
+        "text": "yeow",
+        "user": "UG3R258CD",
+        "ts": "1550778612.002400"
+    },
+    {
+        "client_msg_id": "e39dedce-0500-4940-a607-61713988f818",
+        "type": "message",
+        "text": "nicely done",
+        "user": "UG3R258CD",
+        "ts": "1550778622.002600"
+    },
+    {
+        "client_msg_id": "1267468d-9f2f-4954-aa30-dc215442a60e",
+        "type": "message",
+        "text": "NOICE!!!!",
+        "user": "UG51E6DML",
+        "ts": "1550778630.002800"
+    },
+    {
+        "client_msg_id": "d19617a4-2645-418b-a793-dd1b1921b004",
+        "type": "message",
+        "text": "2.8M rows by 7 weeks ",
+        "user": "UG2S7PMUG",
+        "ts": "1550778650.003700"
+    },
+    {
+        "client_msg_id": "8724cf72-1756-4661-bdd8-ce65e76db0b4",
+        "type": "message",
+        "text": "Okay, 2 things.\n1) How many hours spent today?\n2) Our Trello needs some work. The shell is there but let’s break things down a bit more",
+        "user": "UG51E6DML",
+        "ts": "1550778685.004300"
+    },
+    {
+        "client_msg_id": "6a60ddb0-287f-4a6e-968d-1851dc414fee",
+        "type": "message",
+        "text": "2.75 by me ",
+        "user": "UG2S7PMUG",
+        "ts": "1550778698.004600"
+    },
+    {
+        "client_msg_id": "778fd287-be1f-4395-87f6-1c32fa20523f",
+        "type": "message",
+        "text": "Hours ",
+        "user": "UG2S7PMUG",
+        "ts": "1550778702.004900"
+    },
+    {
+        "client_msg_id": "e19e17c1-2c03-42bc-9876-3571d1c0f71d",
+        "type": "message",
+        "text": "<@USLACKBOT> Help us",
+        "user": "UG51E6DML",
+        "ts": "1550778711.005300"
+    },
+    {
+        "client_msg_id": "fa4016fe-93a3-46df-b0ab-f56793e74917",
+        "type": "message",
+        "text": "Hahaha",
+        "user": "UG3R258CD",
+        "ts": "1550778719.005700"
+    },
+    {
+        "client_msg_id": "3c876731-9639-49ca-906e-7277c5024a84",
+        "type": "message",
+        "text": "<@USLACKBOT> hello",
+        "user": "UG3R258CD",
+        "ts": "1550778726.006100"
+    },
+    {
+        "client_msg_id": "45bb6b62-4a13-44b8-99b2-0518c6afdbb6",
+        "type": "message",
+        "text": "Yes before sprint two be nice to have a more detailed strello especially as we figure out front end \/ flask and algorithm",
+        "user": "UG2S7PMUG",
+        "ts": "1550778749.007100"
+    },
+    {
+        "client_msg_id": "814d25bc-4fa1-4721-96b6-8db7d3f6c20d",
+        "type": "message",
+        "text": "<@USLACKBOT> mod",
+        "user": "UG2S7PMUG",
+        "ts": "1550778761.007400"
+    },
+    {
+        "client_msg_id": "d0295c44-db2c-4c37-b491-c68ea3be2435",
+        "type": "message",
+        "text": "Yeah! Well we need to build out our sprint 1 as well",
+        "user": "UG51E6DML",
+        "ts": "1550778780.007800"
+    },
+    {
+        "client_msg_id": "fe07b260-27b4-456b-85b8-f76f48255159",
+        "type": "message",
+        "text": "Slackbot is being shy",
+        "user": "UG51E6DML",
+        "ts": "1550778786.008100"
+    },
+    {
+        "client_msg_id": "8eb7ce48-966a-4779-93ac-d1178bd256b9",
+        "type": "message",
+        "text": "Ohh :joy:",
+        "user": "UG2S7PMUG",
+        "ts": "1550780039.008400"
+    },
+    {
+        "client_msg_id": "4b57c4d4-b0c6-4002-b121-2ee3adbe8a9c",
+        "type": "message",
+        "text": "At least we've that done :joy:",
+        "user": "UG2S7PMUG",
+        "ts": "1550780045.008700"
+    },
+    {
+        "client_msg_id": "f5f1d710-d8f1-44ec-af98-74ea6ce13278",
+        "type": "message",
+        "text": "Yeah our trello needs alot of work after seeing niamh and ankhits ahaha",
+        "user": "UG3R258CD",
+        "ts": "1550782979.009100"
+    },
+    {
+        "client_msg_id": "4112eebd-1aed-466d-9729-0a9272d8fab5",
+        "type": "message",
+        "text": "v worrying",
+        "user": "UG3R258CD",
+        "ts": "1550782983.009300"
+    },
+    {
+        "client_msg_id": "029f135b-8657-414a-a3ca-20aab7d424fe",
+        "type": "message",
+        "text": "They dont have slack though",
+        "user": "UG51E6DML",
+        "ts": "1550784480.009500"
+    },
+    {
+        "client_msg_id": "8d8023fa-fa9c-4875-bfe4-485459ead22a",
+        "type": "message",
+        "text": "Oay",
+        "user": "UG51E6DML",
+        "ts": "1550784481.009700"
+    },
+    {
+        "client_msg_id": "4f864ae2-2d2b-4664-83b5-3ef0ce3067fc",
+        "type": "message",
+        "text": "Okay*",
+        "user": "UG51E6DML",
+        "ts": "1550784484.009900"
+    },
+    {
+        "client_msg_id": "294f1586-b69e-4dd7-b118-d2bb03552ae2",
+        "type": "message",
+        "text": "I’ve spent the last hour trying to configure his Agile Project Plan to no avail. Format is messed on it",
+        "user": "UG51E6DML",
+        "ts": "1550784505.010500"
+    },
+    {
+        "client_msg_id": "aff980a2-5945-471a-90b3-41c72a7ff0d3",
+        "type": "message",
+        "text": "Got IT",
+        "user": "UG51E6DML",
+        "ts": "1550785510.010700"
+    },
+    {
+        "client_msg_id": "872d13dc-bec3-44d9-9f08-7433d91ea672",
+        "type": "message",
+        "text": "Uploaded to Google Drive. Looks sparse. When we have everything filled in it will look well",
+        "user": "UG51E6DML",
+        "ts": "1550785642.011500"
+    }
+]

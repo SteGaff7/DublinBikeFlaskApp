@@ -1,0 +1,16 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549965600.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "client_msg_id": "26fd3950-1df5-477d-955b-2af3aff1a0d2",
+        "type": "message",
+        "text": "Meet @ 3 on Sunday 17th Feb.",
+        "user": "UG51E6DML",
+        "ts": "1549965647.000600"
+    }
+]

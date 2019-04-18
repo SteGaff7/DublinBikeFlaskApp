@@ -1,0 +1,39 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550657629.000200",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550657629.000400",
+        "text": "<@UG51E6DML> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550657629.000600",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "client_msg_id": "e1a5f2d2-c93d-422c-8047-8813e70e4af1",
+        "type": "message",
+        "text": "Connecting to EC2 instance from your local machine\n$ ssh -i Keys\/villagebikesec2.pem.txt <mailto:ubuntu@ec2-52-14-104-191.us-east-2.compute.amazonaws.com|ubuntu@ec2-52-14-104-191.us-east-2.compute.amazonaws.com>",
+        "user": "UG2S7PMUG",
+        "ts": "1550657691.001000"
+    },
+    {
+        "client_msg_id": "ae86bc15-aa8f-48b6-a8d7-2f0a5a93dfb6",
+        "type": "message",
+        "text": "Remember to download and use path to key and to use most up to date ubuntu@ip address",
+        "user": "UG2S7PMUG",
+        "ts": "1550657738.001700"
+    }
+]

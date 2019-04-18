@@ -1,0 +1,9 @@
+[
+    {
+        "client_msg_id": "f7fe5799-da5b-4f09-b032-8eaae615d935",
+        "type": "message",
+        "text": "Things to fix:\n- Routing when clicking on pages\n- Have a template file (Contains Banner and Header to remove repeat code). Apparently this is what you have to do in Flask.\n- Get the Footer to stay at the bottom of page",
+        "user": "UG51E6DML",
+        "ts": "1552505646.000100"
+    }
+]

@@ -1,0 +1,30 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1553009170.000200",
+        "text": "<@UG51E6DML> has joined the channel"
+    },
+    {
+        "client_msg_id": "bd2965b2-02c1-4728-9374-5edbdfedacda",
+        "type": "message",
+        "text": "Decided to use pymysql rather than sqlalchemey",
+        "user": "UG51E6DML",
+        "ts": "1553009207.001000"
+    },
+    {
+        "client_msg_id": "284a838c-2d1c-46b6-8469-f7a08c3a9173",
+        "type": "message",
+        "text": "Decided to change the design of our website to reflect the function. This was only noticed when we began to see how our analytics model would work.",
+        "user": "UG51E6DML",
+        "ts": "1553009266.002300"
+    },
+    {
+        "client_msg_id": "35742342-b003-4cea-92b1-460fa937602b",
+        "type": "message",
+        "text": "Decided to use JQuery rather than Post when transferring the information to the script.",
+        "user": "UG51E6DML",
+        "ts": "1553009305.003000"
+    }
+]

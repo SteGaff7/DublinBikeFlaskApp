@@ -1,0 +1,27 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550421909.000200",
+        "text": "<@UG51E6DML> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550421909.000400",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550422676.000500",
+        "text": "<@UG51E6DML> has renamed the channel from \"json-to-python__help\" to \"json_to_python\"",
+        "old_name": "json-to-python__help",
+        "name": "json_to_python"
+    }
+]

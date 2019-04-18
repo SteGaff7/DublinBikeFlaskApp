@@ -1,0 +1,20 @@
+[
+    {
+        "client_msg_id": "100b8eab-0fb4-4126-9b90-4147f35da65b",
+        "type": "message",
+        "text": "** Sprint 3 - Day 11**\n04\/04\/2019\n09:00 - 09:05\n\n- Add Weather to Linear and Random Forest\n- Decide on the model\n- Continue working on the interface",
+        "user": "UG51E6DML",
+        "ts": "1554367100.001500",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1554367129.000000"
+        }
+    },
+    {
+        "client_msg_id": "2cd5e7e2-a9cc-4293-9f83-0c9234e14d66",
+        "type": "message",
+        "text": "** Sprint 3 - Day 12**\n05\/04\/2019\n09:00 - 09:05\n\n- Decide on model\n- Build the graph\n- Web host on EC2\n- Documentation",
+        "user": "UG51E6DML",
+        "ts": "1554371489.002900"
+    }
+]

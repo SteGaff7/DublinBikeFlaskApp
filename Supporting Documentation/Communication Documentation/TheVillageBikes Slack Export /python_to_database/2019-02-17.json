@@ -1,0 +1,27 @@
+[
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550421948.000200",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550421949.000400",
+        "text": "<@UG51E6DML> has joined the channel",
+        "inviter": "UG2S7PMUG"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_name",
+        "ts": "1550422693.000500",
+        "text": "<@UG51E6DML> has renamed the channel from \"python-to-datab__help\" to \"python_to_database\"",
+        "old_name": "python-to-datab__help",
+        "name": "python_to_database"
+    }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "client_msg_id": "46a1bcfa-5a15-4992-b3ae-c6ccd05fab1b",
+        "type": "message",
+        "text": "=======================\n** Sprint 2 - Day 2 **\n26\/02\/2019\n09:10-9:15\n\n- Kerrie is gonna work HTML for the flask (Template - Banner, Footer etc.)\n- Ste G is going to look into connecting the database\n- Ste K is doing the burndown and Project Plan\n- Add tasks to Trello",
+        "user": "UG51E6DML",
+        "ts": "1551172303.000400",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1551172579.000000"
+        }
+    }
+]

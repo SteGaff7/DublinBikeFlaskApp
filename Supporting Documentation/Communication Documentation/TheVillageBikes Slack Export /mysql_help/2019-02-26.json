@@ -1,0 +1,25 @@
+[
+    {
+        "client_msg_id": "df5811b9-46ed-4223-a6d0-58176376957b",
+        "type": "message",
+        "text": "<https:\/\/askubuntu.com\/questions\/583415\/import-error-no-module-named-mysqldb>",
+        "user": "UG2S7PMUG",
+        "ts": "1551176726.000200",
+        "attachments": [
+            {
+                "service_name": "Ask Ubuntu",
+                "title": "Import error :No module named MYSQLdb",
+                "title_link": "https:\/\/askubuntu.com\/questions\/583415\/import-error-no-module-named-mysqldb",
+                "text": "I have a problem so a connection a python to database local of MySQLdb. Message of error is: import MYSQL ImportError:No module named MYSQLdb. This is a script in python 3.4 to connection my",
+                "fallback": "Ask Ubuntu: Import error :No module named MYSQLdb",
+                "thumb_url": "https:\/\/cdn.sstatic.net\/Sites\/askubuntu\/img\/apple-touch-icon@2.png?v=c492c9229955",
+                "from_url": "https:\/\/askubuntu.com\/questions\/583415\/import-error-no-module-named-mysqldb",
+                "thumb_width": 316,
+                "thumb_height": 316,
+                "service_icon": "https:\/\/cdn.sstatic.net\/Sites\/askubuntu\/img\/favicon.ico?v=eff8fd315b9e",
+                "id": 1,
+                "original_url": "https:\/\/askubuntu.com\/questions\/583415\/import-error-no-module-named-mysqldb"
+            }
+        ]
+    }
+]

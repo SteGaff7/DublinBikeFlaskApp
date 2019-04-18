@@ -1,0 +1,104 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550658109.000200",
+        "text": "<@UG2S7PMUG> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550658109.000400",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "client_msg_id": "2b174e71-1a5c-429a-a20e-4d6f332edd4b",
+        "type": "message",
+        "text": "Connecting to AWS RDS via terminal or EC2:\n\nCommand: sudo mysql -u ssk -h <http:\/\/villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com|villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com> -P 3306 -p\nPrompted for password: villagebikes\n\nHost: <http:\/\/villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com|villagebikesdb.c2v2pmaab8cg.us-east-2.rds.amazonaws.com>\nPort: 3306\nUser: ssk\nPassword: villagebikes\nDatabase: villagebikesdb\nDatbase within the DB: VillageBikesDB",
+        "user": "UG2S7PMUG",
+        "ts": "1550658340.002500"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "user": "UG2S7PMUG",
+        "ts": "1550658753.002600",
+        "attachments": [
+            {
+                "fallback": "[February 19th, 2019 10:29 AM] stephengaff7: Attributes",
+                "ts": "1550572177.000100",
+                "author_id": "UG2S7PMUG",
+                "author_subname": "Stephen Gaffney",
+                "channel_id": "CG9248U74",
+                "channel_name": "mysql_help",
+                "is_msg_unfurl": true,
+                "text": "Attributes",
+                "author_name": "Stephen Gaffney",
+                "author_link": "https:\/\/thevillagebikes.slack.com\/team\/UG2S7PMUG",
+                "author_icon": "https:\/\/secure.gravatar.com\/avatar\/fb669dd3cd6af950ec9e71c9e645a9cd.jpg?s=48&d=https%3A%2F%2Fa.slack-edge.com%2F00b63%2Fimg%2Favatars%2Fava_0016-48.png",
+                "mrkdwn_in": [
+                    "text"
+                ],
+                "files": [
+                    {
+                        "id": "FGC142CMC",
+                        "created": 1550572174,
+                        "timestamp": 1550572174,
+                        "name": "MySQLTables.png",
+                        "title": "MySQLTables.png",
+                        "mimetype": "image\/png",
+                        "filetype": "png",
+                        "pretty_type": "PNG",
+                        "user": "UG2S7PMUG",
+                        "editable": false,
+                        "size": 25561,
+                        "mode": "hosted",
+                        "is_external": false,
+                        "external_type": "",
+                        "is_public": true,
+                        "public_url_shared": false,
+                        "display_as_bot": false,
+                        "username": "",
+                        "url_private": "https:\/\/files.slack.com\/files-pri\/TG2S6ASBA-FGC142CMC\/mysqltables.png",
+                        "url_private_download": "https:\/\/files.slack.com\/files-pri\/TG2S6ASBA-FGC142CMC\/download\/mysqltables.png",
+                        "thumb_64": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_64.png",
+                        "thumb_80": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_80.png",
+                        "thumb_360": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_360.png",
+                        "thumb_360_w": 360,
+                        "thumb_360_h": 22,
+                        "thumb_480": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_480.png",
+                        "thumb_480_w": 480,
+                        "thumb_480_h": 29,
+                        "thumb_160": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_160.png",
+                        "thumb_720": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_720.png",
+                        "thumb_720_w": 720,
+                        "thumb_720_h": 44,
+                        "thumb_800": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_800.png",
+                        "thumb_800_w": 800,
+                        "thumb_800_h": 48,
+                        "thumb_960": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_960.png",
+                        "thumb_960_w": 960,
+                        "thumb_960_h": 58,
+                        "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/TG2S6ASBA-FGC142CMC-10b34fa183\/mysqltables_1024.png",
+                        "thumb_1024_w": 1024,
+                        "thumb_1024_h": 62,
+                        "image_exif_rotation": 1,
+                        "original_w": 1852,
+                        "original_h": 112,
+                        "permalink": "https:\/\/thevillagebikes.slack.com\/files\/UG2S7PMUG\/FGC142CMC\/mysqltables.png",
+                        "permalink_public": "https:\/\/slack-files.com\/TG2S6ASBA-FGC142CMC-809b4b4d57",
+                        "is_starred": false
+                    }
+                ],
+                "color": "D0D0D0",
+                "from_url": "https:\/\/thevillagebikes.slack.com\/archives\/CG9248U74\/p1550572177000100",
+                "is_share": true,
+                "footer": "Posted in #mysql_help"
+            }
+        ]
+    }
+]

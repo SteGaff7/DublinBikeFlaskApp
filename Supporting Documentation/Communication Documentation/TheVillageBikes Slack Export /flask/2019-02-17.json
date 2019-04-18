@@ -1,0 +1,57 @@
+[
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550422014.000200",
+        "text": "<@UG3R258CD> has joined the channel"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_purpose",
+        "ts": "1550422014.000300",
+        "text": "<@UG3R258CD> set the channel purpose: Information about Flask",
+        "purpose": "Information about Flask"
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550422015.000500",
+        "text": "<@UG2S7PMUG> has joined the channel",
+        "inviter": "UG3R258CD"
+    },
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550422015.000700",
+        "text": "<@UG51E6DML> has joined the channel",
+        "inviter": "UG3R258CD"
+    },
+    {
+        "client_msg_id": "2850278c-9c7b-4e3f-b2dc-e2113ed99b57",
+        "type": "message",
+        "text": "<https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972>",
+        "user": "UG3R258CD",
+        "ts": "1550422018.000900",
+        "attachments": [
+            {
+                "service_name": "Code Envato Tuts+",
+                "title": "Creating a Web App From Scratch Using Python Flask and MySQL",
+                "title_link": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972",
+                "text": "In this series, we'll be using Python, Flask and MySQL to create a simple web application from scratch. It will be a simple bucket list application where users can register, sign in and create...",
+                "fallback": "Code Envato Tuts+: Creating a Web App From Scratch Using Python Flask and MySQL",
+                "image_url": "https:\/\/cms-assets.tutsplus.com\/uploads\/users\/34\/posts\/22972\/preview_image\/python.png",
+                "from_url": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972",
+                "image_width": 361,
+                "image_height": 250,
+                "image_bytes": 26086,
+                "service_icon": "https:\/\/static.tutsplus.com\/assets\/apple-touch-icon-edce48c2c1293474a34fa8f1c87b5685.png",
+                "id": 1,
+                "original_url": "https:\/\/code.tutsplus.com\/tutorials\/creating-a-web-app-from-scratch-using-python-flask-and-mysql--cms-22972"
+            }
+        ]
+    }
+]

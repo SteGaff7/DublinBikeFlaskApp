@@ -1,0 +1,20 @@
+[
+    {
+        "client_msg_id": "c85a4aab-6513-44e0-b84c-09e43698729c",
+        "type": "message",
+        "text": "** Sprint 3 - Day 7**\n31\/03\/2019\n15:00 - 15:15\n\n- Working on Random Forest\n- Working on Linear Regression\n- Working on the interface",
+        "user": "UG51E6DML",
+        "ts": "1554194443.000800"
+    },
+    {
+        "client_msg_id": "fc910a53-f5da-4346-8598-2544e1ffca28",
+        "type": "message",
+        "text": "** Sprint 3 - Day 9**\n02\/04\/2019\n09:00 - 09:05\n\n- Working on Random Forest\n- Working on Linear Regression\n- Working on the interface",
+        "user": "UG51E6DML",
+        "ts": "1554194459.001100",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1554364128.000000"
+        }
+    }
+]

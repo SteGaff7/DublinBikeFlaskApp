@@ -1,0 +1,9 @@
+[
+    {
+        "client_msg_id": "73bafc44-c6e7-4d19-aaa7-d384892520ea",
+        "type": "message",
+        "text": "ssh -i villagebikesec2.pem.txt <mailto:ubuntu@ec2-52-14-104-191.us-east-2.compute.amazonaws.com|ubuntu@ec2-52-14-104-191.us-east-2.compute.amazonaws.com>",
+        "user": "UG51E6DML",
+        "ts": "1550742500.000100"
+    }
+]

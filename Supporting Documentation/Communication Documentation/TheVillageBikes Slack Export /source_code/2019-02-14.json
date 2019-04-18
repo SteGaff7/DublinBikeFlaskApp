@@ -1,0 +1,18 @@
+[
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137332.000200",
+        "text": "<@UG2S7PMUG> has joined the channel",
+        "inviter": "UG51E6DML"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1550137332.000400",
+        "text": "<@UG3R258CD> has joined the channel",
+        "inviter": "UG51E6DML"
+    }
+]

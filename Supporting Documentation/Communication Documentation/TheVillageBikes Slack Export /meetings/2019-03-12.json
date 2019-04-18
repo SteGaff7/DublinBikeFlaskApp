@@ -1,0 +1,13 @@
+[
+    {
+        "client_msg_id": "242247e3-b89b-4c13-b4b4-65a7ece1224b",
+        "type": "message",
+        "text": "** Sprint 2 - Review **\n11\/03\/2019\n11:30-12-00\n\nThe second sprint was a great success. We noticed a significant difference vs. the first sprint. We believe this to be largely attributed to our knowledge of the Scrum methodology.\n\nOur original product backlog was completed ahead of time.  For this reason we decided to work on some of the other features. This included:\n- JQuery\n- Building the analytics box\n- Working with some of the dynamic data\n- Implementing the Restful API’s.\n\nWe have two weeks off and have decided that we would continue working through these two weeks before we begin the 3rd sprint. We have decided on the following to be complete:\n- Posting to the database successfully\n- Analytics Box (display weather, information on route\/time etc.)\n- Look into Eircode API\n- AOF\n\nOverall we were happy with the sprint. We had earmarked the Trello as a point to improve on - and we did.",
+        "user": "UG51E6DML",
+        "ts": "1552401743.004300",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1552402106.000000"
+        }
+    }
+]

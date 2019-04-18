@@ -1,0 +1,13 @@
+[
+    {
+        "client_msg_id": "c4e60e54-bd1e-4f4b-b514-b51021fb4bff",
+        "type": "message",
+        "text": "=============================\n** Sprint 2 - Plan **\n11:00 - 11:40\n25\/02\/2019\n\nReview:\n- We were happy with how the first sprint went. Although there were, initially, a few concepts to understand and implement via scrum… the latter part of the sprint worked very well.\n- With regards to our performance, we achieved all the tasks we outlined in our Burndown chart at the start of the sprint. There wee however a few things that we wanted to work on.\n- These include: Working on using the Trello board a bit more in order to optimise the development process; improve the communication between all members of the team.\n- Going forward we also noted that we wanted to keep adding to the requirements document that we have complied - there are a number of things that we wanted to add and these have been identified.\n\nTo-Do:\nBelow are some of the things that we have decided to do for our Sprint 2 (We have decided that this should last 2 weeks). We have listed that above features to be completed but have also ensured that they are in our burndown chart:\n\n- Aim is build the the flask app (HTML, CSS)\n- Look at bringing in the PHP (RESTFUL API’s)\n- Look at pulling the from the Database - ensure that the web app is pulling the database information - Just the first line of the weather \/ bikes etc.\n\nThese are the high-level features are further delegation will be outlined in our Stand up meetings notes.",
+        "user": "UG51E6DML",
+        "ts": "1551095036.005000",
+        "edited": {
+            "user": "UG51E6DML",
+            "ts": "1551171660.000000"
+        }
+    }
+]

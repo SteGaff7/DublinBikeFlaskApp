@@ -1,0 +1,48 @@
+[
+    {
+        "user": "UG51E6DML",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549894939.000200",
+        "text": "<@UG51E6DML> has joined the channel",
+        "reactions": [
+            {
+                "name": "slightly_smiling_face",
+                "users": [
+                    "UG2S7PMUG"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "UG2S7PMUG",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549895021.000400",
+        "text": "<@UG2S7PMUG> has joined the channel"
+    },
+    {
+        "user": "UG3R258CD",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1549896132.000700",
+        "text": "<@UG3R258CD> has joined the channel",
+        "reactions": [
+            {
+                "name": "slightly_smiling_face",
+                "users": [
+                    "UG2S7PMUG"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "client_msg_id": "aede508c-3e8b-4ab5-b080-520d7fb8bd65",
+        "type": "message",
+        "text": "Okay guys. You can add new channels (just posted stuff relating to that channel in that channel). I have also add trello and Github so we can push stuff to that from within this app - integration is pretty cool.",
+        "user": "UG51E6DML",
+        "ts": "1549896335.002200"
+    }
+]
